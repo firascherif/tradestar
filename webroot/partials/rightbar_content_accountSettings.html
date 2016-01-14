@@ -1,0 +1,401 @@
+﻿<link href="../assets/styles/settings.css" rel="stylesheet" /> 
+<link href="../assets/styles/bootstrap-select.css" rel="stylesheet" />
+<link href="../assets/styles/bootstrap.vertical-tabs.css" rel="stylesheet" />
+<link href="../assets/styles/bootstrap-switch.css" rel="stylesheet" />
+<link href="../assets/styles/image-picker.css" rel="stylesheet" />
+<link href="../assets/styles/fileinput.css" rel="stylesheet" />
+
+<script src="../assets/scripts/fileinput.js"></script>
+<script src="../assets/scripts/bootstrap-switch.js"></script>
+<script src="../assets/scripts/bootstrap-select.js"></script>
+<script src="../assets/scripts/image-picker.js"></script>
+
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();
+    $("#select").selectpicker();
+    $("#select2").selectpicker();
+    $("#image-picker").imagepicker();
+    $("#image-picker2").imagepicker();
+    $("#input-customBackground").fileinput({
+        mainClass: "input-group-sm",
+        previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',
+    });
+</script>
+
+<div class="col-xs-12">
+    <h6></h6>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <span class="fa fa-gear fa-spin"></span> 
+        <span style="font-weight:bold;">Your settings</span>
+    </div>
+    <div class="panel-body">
+        <!-- tabs left -->
+
+        <div class="col-xs-3" style="padding:0;border-top:1px solid lightgray;"> <!-- required for floating -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs side_setting_tab tabs-left" style="padding-top:4vh;padding-bottom:3vh;font-weight:bold;">
+      <li class="active"><a href="#generalset" data-toggle="tab"><span class="fa fa-cogs" style="padding-right: 1em;"></span>
+          General</a></li>
+      <li><a href="#profileset" data-toggle="tab"><span class="fa fa-user" style="padding-right: 1em;"></span>
+          Profile</a></li>
+      <li><a href="#lobbyset" data-toggle="tab"><span class="fa fa-bank" style="padding-right: 1em;"></span>
+          Lobby</a></li>
+      <li><a href="#floorset" data-toggle="tab"><span class="fa fa-bar-chart-o" style="padding-right: 1em;"></span>
+          Floor</a></li>
+    </ul>
+</div>
+
+<div class="col-xs-9" style="padding-left:0;">
+    <!-- Tab panes -->
+    <div class="tab-content side_settingtab_pane">
+      <div class="tab-pane fade in active" id="generalset">
+
+          <div class="col-xs-12" style="padding:0">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <span class="fa fa-desktop" style="padding-right:1vh"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Look and Feel</span>
+                  </div>
+                  <div class="panel-body">
+
+                      <span class="fa fa-eye" style="padding-right:1vh;"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Background Color</span>
+                      <h6></h6>
+
+                      <select class="image-picker show-html" id="image-picker">
+                          <option data-img-src="../assets/images/skins/blueskin.png" value="1">  Blue  </option>
+                          <option data-img-src="../assets/images/skins/greenskin.jpg" value="2">  Green </option>
+                          <option data-img-src="../assets/images/skins/yellowgoldskin.jpg" value="3">  Yellow / Gold </option>
+                      </select>
+
+                      <h6 style="padding: 0 0 1vh 0;"></h6>
+                      <span class="fa fa-magic"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Custom Background</span>
+                      <h6></h6>
+                      <input id="input-customBackground" type="file" class="filestyle" accept="image/*" />
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12" style="padding:0">
+              <div class="panel panel-success">
+                  <div class="panel-heading">
+                      <span class="fa fa-gears"></span>
+                      <span style="font-weight:bold;font-size:0.9em;">Configuration</span>
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-bordered">
+                          <tr style="text-align:center">
+                              <td colspan="5">
+                                  <span class="fa fa-dashboard"></span>
+                                  <span style="font-size:0.9em;font-weight:bold;">
+                                      Dashboard
+                                  </span>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  World Ranking
+                              </td>
+                              <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Friends Online
+                              </td>
+                              <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Tournament Ranking
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Post Zone
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  School Ranking
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  State Zone
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                      </table>
+                      <table class="table table-bordered">
+                          <tr style="text-align:center">
+                              <td colspan="5">
+                                  <span class="fa fa-user"></span>
+                                  <span style="font-size:0.9em;font-weight:bold;">
+                                      Profile
+                                  </span>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Username
+                              </td>
+                              <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Age
+                              </td>
+                              <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  First Name
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Current-City
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Last Name
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger" checked>
+                              </td>
+                              <td style="font-size:0.8em;font-weight:bold;">
+                                  <span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Country
+                              </td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" data-off-color="danger">
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+      <div class="tab-pane fade" id="profileset">
+
+          <div class="col-xs-12">
+              <div class="panel panel-success">
+                  <div class="panel-heading">
+                      <span class="fa fa-desktop"></span>
+                      <span style="font-weight:bold;font-size:0.9em;">Profile Display</span>
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-bordered">
+                          <tr>
+                              <td style="font-size:0.85em;font-weight:bold;"><span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Username</td>
+                              <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" checked>
+
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.85em;font-weight:bold;"><span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  First &amp; Last Name</td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.85em;font-weight:bold;"><span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Age</td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.85em;font-weight:bold;"><span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Current City</td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" checked>
+
+                              </td>
+
+                          </tr>
+                          <tr>
+                              <td style="font-size:0.85em;font-weight:bold;"><span class="fa fa-eye" style="color:royalblue;padding-right:1em;"></span>
+                                  Country</td>
+                              <td style="padding-top: 0.7vh;text-align:right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+        <div class="tab-pane fade" id="lobbyset">
+            <div class="col-xs-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <span class="fa fa-table"></span>
+                        <span style="font-weight: bold; font-size: 0.9em;">Lobby Display</span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                    World Clock</td>
+                                <td style="padding-top: 0.7vh; text-align: right; width: 4vh;">
+                                    <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" checked>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                    Buy-in</td>
+                                <td style="padding-top: 0.7vh; text-align: right;">
+                                    <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                    Players</td>
+                                <td style="padding-top: 0.7vh; text-align: right;">
+                                    <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                    Game Type</td>
+                                <td style="padding-top: 0.7vh; text-align: right;">
+                                    <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success" checked>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                    Time</td>
+                                <td style="padding-top: 0.7vh; text-align: right;">
+                                    <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-filter" style="color: royalblue; padding-right: 1em;"></span>
+                                    Short by</td>
+                                <td style="padding-top: 0.7vh; text-align: right;">
+                                    <select class="selectpicker" id="select" data-style="btn btn-info btn-xs">
+                                        <option value="Name" data-content="<span class='fa fa-table' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Name</span>"></option>
+                                        <option value="Buy-In" data-content="<span class='fa fa-money' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Buy-In</span>"></option>
+                                        <option value="Players" data-content="<span class='fa fa-users' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Players</span>"></option>
+                                        <option value="Type" data-content="<span class='fa fa-gamepad' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Type</span>"></option>
+                                        <option value="Time" data-content="<span class='fa fa-clock-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Time</span>"></option>
+                                        <option value="Private" data-content="<span class='fa fa-lock' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Private</span>"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <div class="tab-pane fade" id="floorset">
+          <div class="col-xs-12">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <span class="fa fa-desktop" style="padding-right:1vh"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Look and Feel</span>
+                  </div>
+                  <div class="panel-body">
+
+                      <span class="fa fa-eye" style="padding-right:1vh;"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Background Color</span>
+                      <h6></h6>
+
+                      <select class="image-picker show-html" id="image-picker2">
+                          <option data-img-src="../assets/images/skins/tableskin/table2.png" value="1">  Default </option>
+                          <option data-img-src="../assets/images/skins/tableskin/table_rect.png" value="2"> Poker </option>
+                      </select>
+                  </div>
+              </div>
+
+              <div class="panel panel-danger">
+                  <div class="panel-heading">
+                      <span class="fa fa-gears" style="padding-right:1vh"></span>
+                      <span style="font-size:0.9em;font-weight:bold;">Configuration</span>
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-bordered">
+                          <tr>
+                              <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                  News</td>
+                              <td style="padding-top: 0.7vh; text-align: right;">
+                                  <input type="checkbox" name="my-checkbox" data-size="mini" data-on-text="YES" data-off-text="NO" data-on-color="success">
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="font-size: 0.85em; font-weight: bold;"><span class="fa fa-eye" style="color: royalblue; padding-right: 1em;"></span>
+                                  Headline Source</td>
+                              <td style="padding-top: 0.7vh; text-align: right;">
+                                  <select class="selectpicker" id="select2" data-style="btn btn-info btn-xs">
+                                        <option value="Forbes" data-content="<span class='fa fa-newspaper-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Forbes</span>"></option>
+                                        <option value="New York Time" data-content="<span class='fa fa-newspaper-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>New York Time</span>"></option>
+                                        <option value="The Independant" data-content="<span class='fa fa-newspaper-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>The Independant</span>"></option>
+                                        <option value="Fx Street" data-content="<span class='fa fa-newspaper-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>Fx Street</span>"></option>
+                                        <option value="FT" data-content="<span class='fa fa-newspaper-o' style='padding-right:1vh'></span><span style='font-size:0.95em;font-weight:bold;'>FT</span>"></option>
+                                    </select>
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+    </div>
+</div>
+
+      
+    </div>
+</div>
+</div>

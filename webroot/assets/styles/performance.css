@@ -1,0 +1,24 @@
+﻿#myfirstchart > svg {width: 100% !important;
+                     height:100%;
+}
+.box_border {
+    border-radius:5px;
+    color:white;
+}
+new_font {
+    
+}
+.new_font ul li {
+    color:white;
+}
+mytable {
+}
+.borderless table {
+border-top-style: none;
+border-left-style: none;
+border-right-style: none;
+border-bottom-style: none;
+}
+mytable.table tr td {
+    border-top: none;
+}

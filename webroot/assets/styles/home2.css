@@ -1,0 +1,120 @@
+.custom_posticon {
+    color:gray;
+    padding-right:1vh;
+}
+/*background when we change orders*/
+.black-videoOverLay{
+	 /*display: none; */
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	/*margin-left:9%;
+	margin-right:9%;
+	*/
+	background-color: black;
+	z-index:100005;
+	-moz-opacity: 0.7;
+	opacity:.70;
+	filter: alpha(opacity=70);
+}
+.singUpBackgr2{
+	/*display: none;*/
+	width: 488px;
+	height: 360px;
+	z-index:100100;
+	position: absolute;
+	margin-left: -42%;
+	margin-top:	-31%;
+}
+
+
+.custom_posticon:hover {
+    color:#D74B4B;
+}
+/* Breaking news styles */
+#my_news{
+    padding: 0;
+}
+#my_news .row{
+    line-height: 1.1;
+}
+#my_feedList{
+    /*border: 1px solid red;*/
+    /*width: 400px;*/
+}
+#my_news ul{
+    width: 100%;
+    padding: 0;
+}
+#my_news li{
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    list-style: none;
+    border-top: 0 solid #cccccc;
+    padding: 10px 0;
+    cursor: pointer;
+    z-index: 1;
+    /*padding: 10px;*/
+}
+#my_news img.img-rounded{
+    height: 52px;
+    width: 52px;
+    margin-left: 5px;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+#my_postTitle{
+    color: white;
+    font-weight: 100;
+    text-align: left;
+    padding-top: 0;
+    width: 100%;
+}
+#my_postTitle2{
+    color: #000000;
+    font-weight: bold;
+    text-align: left;
+    padding-top: 0;
+    width: 100%;
+}
+#my_news li a{
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.my_postContent,.my_contentSnippet{
+    news: #555555;
+    font-size:0.85em;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding-top: 0;
+    text-align: left;
+}
+.my_postTime{
+    margin-right: 7%;
+}
+
+#my_news .my_closeNewsItem{
+    position:absolute;
+    right:25px;
+    top: 0;
+    display: none;
+    cursor: pointer;
+}
+
+#fullNewsDiv{
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 30;
+}
+
+
+
+/* End of Breaking News Styles*/

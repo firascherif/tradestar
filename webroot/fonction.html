@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+    var tableName;
+    var sessionID;
+
+    //Demande pour infos de table
+    eb.send(tableName + ".TableInfo", {}, function (reply) {
+        console.log(reply.tableName);
+        console.log(reply.maxPlayers);
+        console.log(reply.totalGameTime);
+        console.log(reply.gameType);
+    });
+
+    //Demande pour toute jouer deja dans la game
+    eb.send(tableName + ".PlayersInfo", {}, function (reply) {
+        for (var i = 0; i < reply.length; i++) {
+            console.log(reply[i].userName);
+        }
+    });
+
+    //Recois nouveux jouer
+    eb.registerHandler(tableName + '.NewPlayer', function (reply) {
+        console.log(reply.userName);
+    });
+
+    //Recois Leaderboard au complet
+    eb.registerHandler(tableName + '.LeaderBoard', function (reply) {
+        for (var i = 0; i < reply.length; i++) {
+            console.log(reply[i].userName);
+        }
+    });
+
+    //Recois countdown 5,4,3,2, start, modalOff
+    eb.registerHandler(tableName + '.GameStart', function (reply) {
+        console.log(reply);
+    });
+
+    //pour le timer
+    eb.registerHandler(tableName + '.Timer', function (reply) {
+        console.log(reply.timeRemaining);
+
+        //timer pour les rondes
+        if (reply.hasOwnProperty("roundTimeRemaining")) {
+            console.log(reply.roundTimeRemaining);
+        }
+    });
+
+    //Update des trade
+    eb.registerHandler(sessionID + '.' + tableName + '.Trades', function (reply) {
+        for (var i = 0; i < reply.length; i++) {
+            //meme kle que la vielle version
+            console.log(reply[i].tradeGain);
+        }
+    });
+♠
+    //Notifications pour le jeu "Fourty four"
+    //Recois le numero de ranking du jouere (a la fin de la game) 1,2,3 our 0 (0 signifie 4eme place et plus).
+    eb.registerHandler(sessionID + '.' + tableName + '.FourtyfourNotifications', function (reply) {
+        console.log("Game over, you have finished in " + reply + " place.");
+    });
+
+    //Notifications pour le jeu "Survivor"
+    eb.registerHandler(sessionID + '.' + tableName + '.SurvivorNotifications', function (reply) {
+
+        //chaque jouer recois un message quand le temp de paix est fini.
+        if (reply.hasOwnProperty("peace")) {
+            console.log("peace time end")
+        }
+
+        //Une notification est envoyer a chaque jouere qui est encore dans la game quand un autre jouere est eliminer
+        if (reply.hasOwnProperty("playerEliminated")) {
+            console.log(reply.userName + "Has been eliminated")
+        }
+
+        //le jour elminier recevra ce message
+        if (reply.hasOwnProperty("elimination")) {
+            console.log("You have been eliminated")
+        }
+
+        //le winner recevra ce message quant il gagne
+        if (reply.hasOwnProperty("win")) {
+            console.log("You have won the game!")
+        }
+    });
+
+    //Notifications pour le jeu "Survivor"
+    eb.registerHandler(sessionID + '.' + tableName + '.EliminatorNotifications', function (reply) {
+
+        //chaque jouer recois un message quand le temp de paix est fini.
+        if (reply.hasOwnProperty("peace")) {
+            console.log("peace time end")
+        }
+
+        //Une notification est envoyer a chaque jouere qui est encore dans la game quand un autre jouere est eliminer
+        if (reply.hasOwnProperty("playerEliminated")) {
+            console.log(reply.userName + "Has been eliminated")
+        }
+
+
+        //le jour elminier recevra ce message
+        if (reply.hasOwnProperty("elimination")) {
+            console.log("You have been eliminated")
+        }
+
+        //le winner recevra ce message quant il gagne
+        if (reply.hasOwnProperty("win")) {
+            console.log("You have won the game!")
+        }
+
+        //Les jouer qui attend que le leader fait un choix recois la kle "waitingForPick"
+        //Presente les avec un modal qui dit que le leader est en train de faire un chois
+        if (reply.hasOwnProperty("waitingForPick")) {
+            console.log("waiting for pick")
+            //Les jouer recevron un countdown de 30 jusqua 0, utilise la kle "pauseCounter" pour recevoir
+            //ce countdown. Le countdown se termine a 0, ou au moment que le back end recois le choix du leader
+            console.log(reply.pauseCounter);
+        }
+
+        //Seulement le leader recevra un message qui contien la kle "makeAPick"
+        //Presente lui un modal avec le chois de jouer
+        // utilise la fonction "eliminate" (juste en bas) pour envoyer le chois au back end
+        if (reply.hasOwnProperty("makeAPick")) {
+            //Le leader recevra un countdown de 30 jusqua 0, utilise la kle "pauseCounter" pour recevoir
+            //ce countdown. Le countdown se termine a 0, ou au moment que le back end recois son chois
+            console.log(reply.pauseCounter);
+        }
+    });
+
+    //Fonction qui elimine le jouer ... dois etre presenter dans la modal pour le leader
+    function eliminate(userName) {
+        console.log(userName);
+        eb.send(tableName + ".Eliminator", {"userName": userName}, function (reply) {
+        });
+    }
+
+    function buy(buyVal) {
+        var valToFloat = parseFloat(buyVal.trim());
+        var buy = {
+            "sessionID": sessionID,
+            "volume": valToFloat,
+            "tradeTypeFlag": 1,
+            "currency": "EUR/USD"
+        }
+
+        eb.send(tableName + ".NewTrade", buy, function (reply) {
+            //reply.curValAtPurchase = valeur de devise au moment de l'achat
+            //reply.currency = devise (ex: "EUR/USD")
+            //reply.tradeID = le ID du trade
+            //reply.volume = volume du trade
+            console.log(reply);
+        });
+    }
+
+    function sell(sellVal) {
+        var valToFloat = parseFloat(sellVal.trim());
+        var sell = {
+            "sessionID": sessionID,
+            "volume": valToFloat,
+            "tradeTypeFlag": 2,
+            "currency": "EUR/USD"
+        }
+        eb.send(tableName + ".NewTrade", sell, function (reply) {
+            //reply.curValAtPurchase = valeur de devise au moment de l'achat
+            //reply.currency = devise (ex: "EUR/USD")
+            //reply.tradeID = le ID du trade
+            //reply.volume = volume du trade
+            console.log(reply);
+        });
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<div class="modal_filter col-xs-12" ng-show="modal_on" ng-click="modal_on=''; modal_open_lobby='';"></div>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="z-index:10;margin: 0; border: none;">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ng-click="changePage('');" class="navbar-brand" href="#" style="padding-top:1vh;"><img
+                    src="assets/images/navbar_menu/tradestar_logo.png" style="width:150px;height:35px"/>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active : !currentPage}" ng-click="changePage('/');" ng-hide="Auth"><a href="#">Home</a></li>
+                <li ng-class="{active : !currentPage}" ng-click="changePage('/');" ng-show="Auth"><a href="#">Home</a></li>
+                <li ng-class="{active : currentPage=='lobby', disabled : !Auth}" ng-click="changePage('lobby');"><a href="">
+                    Lobby</a></li>
+                <li class="dropdown" ng-class="{active : currentPage=='floor', disabled : !Auth}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trading Floor <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" ng-hide="!Auth">
+                        <li ng-repeat="table in playerInfo.tables" ng-click="goToTable(table.tableName);"><a href="#">{{table.tableName}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-right animated" role="search"
+                  ng-class="{fadeInLogin : !Auth, fadeOutLogin : Auth}" ng-show="!Auth">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="E-Mail" ng-model="login_username">
+                    <input type="password" class="form-control" placeholder="Password" ng-model="login_password">
+                </div>
+                <button type="submit" class="btn btn-success" ng-click="login_submit(login_username, login_password);">
+                    Log In&nbsp;</button>
+                <!--Forget Button-->
+                <button type="button" ng-click="open_forgetPassword(); getRandomPics();" class="ENABLED btn btn-success"
+                        onclick="clearEmail();">Forgot password?&nbsp;</button>
+                <!--End Forget Button-->
+            </form>
+
+            <!--
+            <form class="navbar-form navbar-right animated hidden-lg" role="search"
+                  ng-class="{fadeInLogin : !Auth, fadeOutLogin : Auth}" ng-show="!Auth">
+
+                <button type="submit" class="btn btn-success" ng-click="login_submit(login_username, login_password);">
+                    Log In&nbsp;</button>
+
+                <button type="button" ng-click="open_forgetPassword(); getRandomPics();" class="btn btn-success"
+                        onclick="clearEmail();">Forgot password?&nbsp;</button>
+
+            </form>
+            -->
+
+
+            <form class="navbar-form navbar-right animated" role="search"
+                  ng-class="{fadeInLogin : Auth, fadeOutLogin : !Auth}" ng-show="Auth" style="margin: 0;">
+                <div class="glyphicon glyphicon-star s" style="vertical-align: center;">
+                    {{playerInfo.numStars}}
+                </div>
+
+                <div class="espace_tools"></div>
+                <!--<img ng-show="Auth" src="../{{playerInfo.imgUrl}}"
+                     style="width: 50px; height: 45px; border-radius:0px; margin: 3px 0 0 0;">-->
+                <img ng-src="assets/images/users/{{playerInfo.username}}/profile_pic.png" alt="user picture" class="profile_img"
+                     style="width: 50px; height: 45px; border-radius:0px; margin: 3px 0 0 0;">
+
+                <div class="espace_tools" style="width: 0.5em;"></div>
+                <div class="form-group" style="vertical-align: top;">
+                    <h5 style="text-align:left; font-weight:bold; margin: 0.5em;">{{playerInfo.username}}</h5>
+                    <h6 style="margin: 0;">{{playerInfo.balance | currency}}&nbsp;&nbsp;&nbsp;</h6>
+                </div>
+
+
+                <div class="espace_tools" style=""></div>
+
+                <div class="progress"
+                     title="{{playerXP.totalXP}} XP's, get {{playerXP.pointsToNextLevel - playerXP.totalXP}} more to reach level {{playerXP.currentLevel + 1}}"
+                     style="vertical-align: top; margin-top: 2em; display: inline-block; width: 10em; height: 13px; margin-bottom: 0;">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active"
+                         style="width: {{playerXP.progressPercent}}%;">
+                        <span>
+                            <p style="color:black; position: absolute; top: 0.4em; width:10em; text-align: center;
+                                font-weight: bold; font-size: 0.9em; margin-left: 1vw; margin-top: -0.5vh;">
+                                Level {{playerXP.currentLevel}}
+                            </p>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="espace_tools" style="width: 3em;"></div>
+
+                <button style="margin-top: 0.6em;" type="submit" class="btn btn-google-plus" ng-click="logout();">Log
+                    out
+                </button>
+            </form>
+
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+
+    <div 
+         style="overflow-x: hidden; overflow-y: hidden; padding: 0; background: black; height: 30px;">
+
+        <div id="CurBarLoading" class="progress" style="height: 30px;">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only">40% Complete (success)</span>
+                Loading ...
+            </div>
+        </div>
+
+        <canvas id="CnvCurrenciesShow" width="5200px" height="30px"
+                style="overflow-x: hidden; padding: 0;">
+        </canvas>
+    </div>
+
+    <div id="gameBar" ng-show="currentPage=='floor'" class="col-xs-12" style="padding: 10px; background-color: white;">
+        <div class="col-xs-1"><span class="swipers gameBar-link glyphicon glyphicon-fast-backward" ng-click="swipeLeft()" ng-show="playerInfo.tables[1] && myTable"></span></div>
+        <div class="col-xs-2">{{currentTable.tableName}}</div>
+        <div class="col-xs-4 gameBar-link"  style="padding: 0;">
+            <div id="barGritter" ng-show="barGritter" class="col-xs-12 bar_gritter" style="padding: 0" ng-click="toggleGritterHistory();">
+                <div class="col-xs-1" style="padding: 0;">
+                    <img style="width: 12px;" src="../assets/images/navbar_menu/chek-mark.png"/>
+                </div>
+                <div class="col-xs-11" style="padding: 0;">
+                    <span  style="padding: 5px; font-size: 12px;" class="">
+
+                        {{currentTable.gritter[0]}}
+
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-4">
+            <div class="pull-right">
+                <span class="glyphicon glyphicon-time" style="top:3px;"></span><span style="font-size: 12px; padding: 10px;">{{currentTable.totalGameTime}}</span>
+                <span class="glyphicon glyphicon-flash" style="top:3px;"></span><span style="font-size: 12px; padding: 10px;">{{currentTable.gameType}}</span>
+                <span class="glyphicon glyphicon-user" style="top:3px;"></span><span style="font-size: 12px; padding: 10px;">{{currentTable.maxPlayers}}</span>
+                <span class="gameBar-link" ng-click="toggleLeaderboard();"><span class="glyphicon glyphicon-list" style="top:3px;"></span><span style="font-size: 12px; padding: 10px;">Leaderboard</span></span>
+            </div>
+        </div>
+
+        <div class="col-xs-1"><span class="swipers gameBar-link glyphicon glyphicon-fast-forward pull-right" ng-click="swipeRight()" ng-show="playerInfo.tables[1] && myTable"></span></div>
+    </div>
+
+</nav>
+
+
+<!--Forget Button-->
+<script type="text/javascript">
+
+    function clearEmail() {
+        document.getElementById("mail").focus();
+        document.getElementById("mail").value = "";
+
+    }
+
+    document.getElementById("mail").onkeyup = function () {
+        var key = event.keyCode || event.charCode;
+
+        if (key == 8 || key == 46) {
+            document.getElementById("mail").value = "";
+            document.getElementById("mail").style.borderWidth = "1px";
+            document.getElementById("mail").style.borderColor = "#2095c0";
+        }
+        if (key == 13) {
+            document.getElementById("mail").value = "";
+        }
+    }
+
+
+</script>
+
+<div class="modal_createTable col-lg-4 col-lg-offset-2"
+     ng-show="windows_open_forgetPassword;" style="padding: 0; position: absolute; left: 18.1%; top: 12vh;">
+
+    <h2 style="background: black; margin-top: 0; text-align: center; color: white; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-radius: 0.3em 0.3em 0 0; font-size: 1.3em; padding: 0.6em;">
+        Forgot Password</h2>
+
+    <div class="container-fluid">
+
+        <div style="padding: 1em; text-align: center;">
+            <h5>Do you want to get your Password on your email?</h5>
+            <br/>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="input-group" style="margin-bottom: 2.5vh;">
+                        <div class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;Enter Username&nbsp;&nbsp;&nbsp;</div>
+
+                        <input class="form-control" type="email" placeholder="Enter Username" ng-model="userNameCheck"
+                               id="userName"
+                                />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="input-group" style="margin-bottom: 2.1vh;">
+                        <div class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;Enter your e-mail&nbsp;&nbsp;&nbsp;</div>
+
+                        <input class="form-control" type="email" placeholder="john@example.com"
+                               ng-model="forget_email" id="mail"
+                               ng-keyup="$event.keyCode == 13 ? sendPassword(forget_email) : ''"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div ng-show="wrongPassword" style="text-align: center; color: red; width: 100%;">
+            <p>The E-mail You just entered does not exist.</p>
+
+            <button class="btn btn-success pull-left" style="margin-left: 9vh; margin-top: 2vh; float: left;"
+                    ng-click="sendPassword(forget_email);" onclick="clearEmail();"
+                    ng-keyup="$event.keyCode == 13 ? sendPassword(forget_email) : '';">Try again!
+            </button>
+            <button class="btn btn-default pull-left" data-dismiss="modal"
+                    style="margin-left: 2em; float: right; margin-top: 2vh;" ng-click="closeBottom();">Cancel
+            </button>
+
+        </div>
+
+        <div ng-show="sendEmail">
+
+            <h5 style="width: 100%; text-align: center;">Enter 5 digites from the picture below <br/> for confirmation
+            </h5>
+
+            <p style="padding-left: 3.5vh; width: 100%; margin-left: 2vh; margin-bottom: 7vh;">
+                <img class="digitImages" ng-src='{{imageURLArray[0]}}' alt="Submit human input"/>
+                <img class="digitImages" ng-src='{{imageURLArray[1]}}' alt="Submit human input"/>
+                <img class="digitImages" ng-src='{{imageURLArray[2]}}' alt="Submit human input"/>
+                <img class="digitImages" ng-src='{{imageURLArray[3]}}' alt="Submit human input"/>
+                <img class="digitImages" ng-src='{{imageURLArray[4]}}' alt="Submit human input"/>
+
+
+                <input class="form-control" type="text" placeholder="XXXXX"
+                       style="width: 50%; margin-left: 15vh; display: block;" id="inputDigits"/>
+
+            </p>
+
+            <div ng-show="wrongHumanInput" style="text-align: center; color: red; width: 100%;">
+                <p>Entered digits do not match the picture!</p>
+
+            </div>
+
+            <hr style="display: block; margin-bottom: 0.5em; width: 85%; border-style: inset;
+    border-width: 1.5px; margin-left: 3vh;">
+
+
+            <p>
+
+                <button class="btn btn-success pull-left" style="margin-left: 4vh; float: left;"
+                        ng-click="sendPassword(forget_email);" onclick="clearEmail();"
+                        ng-keyup="$event.keyCode == 13 ? sendPassword(forget_email) : ''">Send email
+                </button>
+                <button class="btn btn-default pull-left" data-dismiss="modal" style="margin-left: 2em; float: right;"
+                        ng-click="closeBottom();">Cancel
+                </button>
+
+            </p>
+
+        </div>
+
+
+        <div ng-show="confirmInformation" style="text-align: center; color: blue; width: 100%;">
+            <p>Information was successfully sent!</p>
+
+            <button class="btn btn-default pull-left" style="margin-left: 16vh; float: left;"
+                    onclick="clearEmail();" ng-click="closeBottom();">Close
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<div id="pageButtonOverlay" ng-show="pageForget" ng-click="closeBottom();"></div>
+<div ng-click="enterReleased();"></div>
+
+<!--End of Forget Button-->

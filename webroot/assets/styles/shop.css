@@ -1,0 +1,31 @@
+﻿.shop_nav {
+}
+
+.shop_nav.nav-pills>li>a {
+    color:#333;
+    font-size:0.85em;
+    font-weight:bold;
+}
+
+.shop_nav.nav-pills > .active > a, .shop_nav.nav-pills > .active > a:hover, .shop_nav.nav-pills>li.active>a:focus {
+    background-color: #333;
+    color:white;
+    font-size:0.85em;
+    font-weight:bold;
+}
+
+div.shop_background_filter {
+    background: RGBA(0,0,0,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 16;
+}
+
+/*Modal Container*/
+div.shop_modal_container {
+    position: fixed;
+    top: 2.5%;
+    z-index: 16;
+    
+}

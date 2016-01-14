@@ -1,0 +1,53 @@
+<!-- Modal Reload chips -->
+
+<div class="col-xs-10 modal_container_creditcard" style="padding: 0; min-height: 20%">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <span>Reload Chips</span>
+        </div>
+        <div class="panel-body">
+
+            <div ng-if="reloadPossible">
+                <label class="col-sm-12">
+                    Do you like to reload your account?
+                </label>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="button" class="btn btn-success" ng-click="onYes();">Yes
+                        </button>
+                        <button type="button" class="btn btn-cancel" ng-click="onNo();">No
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="reloadCompleted">
+                <div ng-if="reloadSuccess">
+                    <h4 class="col-sm-12 text-green">
+                        Congratulations, you account has been reloaded with {{numChips}}. Happy trading!!!
+                    </h4>
+                </div>
+
+            </div>
+
+            <div ng-if="reloadNotPossible">
+                <h4 class="col-sm-12 text-warning">
+                    You have already did a reload within the last 24 hours, please wait for
+                    {{ (timeRemainingInSecs / 3600) | number:2 }} hours to reload next time.
+                </h4>
+            </div>
+
+            <div ng-if="reloadInProgress">
+                <h5 class="glyphicon glyphicon-hourglass col-xs-12 text-center text-bold">Processing your
+                    reload request...</h5>
+            </div>
+
+            <div ng-if="reloadFailed">
+                <h4 class="text-alert text-warning">{{message}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+

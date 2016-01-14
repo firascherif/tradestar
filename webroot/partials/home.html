@@ -1,0 +1,404 @@
+<script type="text/javascript">
+
+    $("input[id='img_signup']").click(function () {
+        
+        console.log("input[id='img_signup'");
+        $("input[id='my_file']").click();
+    });
+
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+
+    /* To initialize BS3 popovers set this below */
+    //$(function () {
+    //    $("[data-toggle='popover']").popover();
+    //});
+
+    $(function () {
+        var text = '<p>And heres some amazing contentIt s very engaging Right</p>';
+        var image = '<img src="../../assets/images/home/Techcrunch-Logo.png"/>';
+        $('#pop1').popover({ title: image, content: text, offset: 5, html: true })
+    });
+
+    $(function () {
+        var text2 = '<p>And heres some amazing contentIt s very engaging Right</p>';
+        var image2 = '<img src="../../assets/images/home/Reuters_logo1.png"/>';
+        $('#pop2').popover({ title: image2, content: text2, html: true })
+    });
+
+    $(function () {
+        var text3 = '<p>And heres some amazing contentIt s very engaging Right</p>';
+        var image3 = '<img src="../../assets/images/home/the-independent-logo.png"/>';
+        $('#pop3').popover({ title: image3, content: text3, html: true })
+    });
+
+    $(function () {
+        var text4 = '<p>And heres some amazing contentIt s very engaging Right</p>';
+        var image4 = '<img src="../../assets/images/home/city-am-logo-1.png"/>';
+        $('#pop4').popover({ title: image4, content: text4, html: true })
+    });
+
+    $(function () {
+        var text5 = '<p>And heres some amazing contentIt s very engaging Right</p>';
+        var image5 = '<img src="../../assets/images/home/techradar-logo1.png"/>';
+        $('#pop5').popover({ title: image5, content: text5, html: true })
+    });
+
+    function changeImage(imgID, imgSrc) {
+        document.getElementById(imgID).src = imgSrc;
+    }
+</script>
+
+
+<div class="panel panel-default col-xs-12" style="margin-top: 90px; margin-bottom: 10px;">
+
+<div class="language_bar col-xs-10 col-xs-offset-1 visible-md visible-lg">
+    <div class="btn-group btn-group-justified">
+        <a class="btn-group" href="#" style="text-decoration: none">
+            <img id="imglang1" src="../../assets/images/home/lang/en.png"/>
+            English</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang2','../../assets/images/home/lang/frGrey.png')"
+           onmouseout="changeImage('imglang2','../../assets/images/home/lang/fr.png')">
+            <img id="imglang2" src="../../assets/images/home/lang/fr.png"/>
+            Francais</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang3','../../assets/images/home/lang/itGrey.png')"
+           onmouseout="changeImage('imglang3','../../assets/images/home/lang/it.png')">
+            <img id="imglang3" src="../../assets/images/home/lang/it.png"/>
+            Italiano</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang4','../../assets/images/home/lang/esGrey.png')"
+           onmouseout="changeImage('imglang4','../../assets/images/home/lang/es.png')">
+            <img id="imglang4" src="../../assets/images/home/lang/es.png"/>
+            Espagnol</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang5','../../assets/images/home/lang/deGrey.png')"
+           onmouseout="changeImage('imglang5','../../assets/images/home/lang/de.png')">
+            <img id="imglang5" src="../../assets/images/home/lang/de.png"/>
+            Deutsch</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang6','../../assets/images/home/lang/chGrey.png')"
+           onmouseout="changeImage('imglang6','../../assets/images/home/lang/ch.png')">
+            <img id="imglang6" src="../../assets/images/home/lang/ch.png"/>
+            Chinese</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang7','../../assets/images/home/lang/krGrey.png')"
+           onmouseout="changeImage('imglang7','../../assets/images/home/lang/kr.png')">
+            <img id="imglang7" src="../../assets/images/home/lang/kr.png"/>
+            Korean</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang7','../../assets/images/home/lang/krGrey.png')"
+           onmouseout="changeImage('imglang7','../../assets/images/home/lang/kr.png')">
+            <img id="imglang7" src="../../assets/images/home/lang/rus.png"/>
+            Russian</a>
+    </div>
+</div>
+
+<div class="language_bar col-xs-10 col-xs-offset-1 visible-sm">
+    <div class="btn-group btn-group-justified">
+        <a class="btn-group" href="#" style="text-decoration: none">
+            <img id="imglang1" src="../../assets/images/home/lang/en.png"/>
+            En</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang2','../../assets/images/home/lang/frGrey.png')"
+           onmouseout="changeImage('imglang2','../../assets/images/home/lang/fr.png')">
+            <img id="imglang2" src="../../assets/images/home/lang/fr.png"/>
+            Fr</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang3','../../assets/images/home/lang/itGrey.png')"
+           onmouseout="changeImage('imglang3','../../assets/images/home/lang/it.png')">
+            <img id="imglang3" src="../../assets/images/home/lang/it.png"/>
+            It</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang4','../../assets/images/home/lang/esGrey.png')"
+           onmouseout="changeImage('imglang4','../../assets/images/home/lang/es.png')">
+            <img id="imglang4" src="../../assets/images/home/lang/es.png"/>
+            Es</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang5','../../assets/images/home/lang/deGrey.png')"
+           onmouseout="changeImage('imglang5','../../assets/images/home/lang/de.png')">
+            <img id="imglang5" src="../../assets/images/home/lang/de.png"/>
+            De</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang6','../../assets/images/home/lang/chGrey.png')"
+           onmouseout="changeImage('imglang6','../../assets/images/home/lang/ch.png')">
+            <img id="imglang6" src="../../assets/images/home/lang/ch.png"/>
+            Ch</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang7','../../assets/images/home/lang/krGrey.png')"
+           onmouseout="changeImage('imglang7','../../assets/images/home/lang/kr.png')">
+            <img id="imglang7" src="../../assets/images/home/lang/kr.png"/>
+            Ko</a>
+        <a class="btn-group" href="#" style="text-decoration: none"
+           onmouseover="changeImage('imglang7','../../assets/images/home/lang/krGrey.png')"
+           onmouseout="changeImage('imglang7','../../assets/images/home/lang/kr.png')">
+            <img id="imglang7" src="../../assets/images/home/lang/rus.png"/>
+            Ru</a>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <h1></h1>
+    <div class="col-md-7 col-sm-12">
+        <div class="col-xs-12" style="text-align: center">
+            <h4 style="font-family: Arial; font-size: 15px; margin-bottom: 0;">Welcome to</h4>
+        </div>
+        <div class="col-xs-12" style="text-align: center;padding:0px;">
+            <h6 style="font-family: 'Bodoni MT Condensed'; font-size: 40px; font-weight: bold;">
+                <img src="assets/images/navbar_menu/tradestar_logo.png" style="width: 150px; height: 35px"/>
+                <span style="font-family: arial; font-size: 10px; font-weight: normal;">"Trade outside the box"</span>
+            </h6>
+        </div>
+        <div class="col-xs-12" style="text-align: center;padding:0px;">
+            <div class="carousel_header">
+                <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <div>
+                                <img style="height: 50vh; width: 100%;" src="../../assets/images/home/carouselle1.png"/>
+                            </div>
+                            <div class="carousel-caption">
+                                <div>
+                                    <h3 class="btn btn-primary" style="float: right">Learn more</h3>
+                                </div>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <img style="height: 50vh; width: 100%;" src="../../assets/images/home/carouselle2.png"/>
+                            </div>
+                            <div class="carousel-caption">
+                                <h3></h3>
+
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <img style="height: 50vh; width: 100%;" src="../../assets/images/home/carouselle3.png"/>
+                            </div>
+                            <div class="carousel-caption">
+                                <h3></h3>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev" ng-non-bindable></a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next" ng-non-bindable></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <h6></h6>
+            <br/>
+
+            <div class="col-xs-4">
+                <a href="http://store.apple.com/us">
+                    <img src="../../assets/images/home/App_Store_Badge.svg" style="width: 100%; height: 50px"/>
+                </a>
+            </div>
+
+            <div class="col-xs-4" style="text-align: center">
+                <p></p>
+                <a href="http://windows.microsoft.com/en-ca/windows-8/apps#Cat=t0"
+                   onclick="window.open(' http://ca.blackberry.com/')">
+                    <p style="font-family: Calibri; font-size: 15px; font-weight: bold;">View other devices</p>
+                </a>
+            </div>
+
+            <div class="col-xs-4">
+                <a href="https://play.google.com/store">
+                    <img src="../../assets/images/home/Google_Play_Badge.svg" style="width: 100%; height: 50px"/>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-5 col-sm-12">
+        <h1></h1>
+        <div class="col-xs-12">
+
+
+            <form class="form-horizontal" role="form">
+
+                <div class="col-xs-10">
+                    <h1 style="font-family: 'Estrangelo Edessa'; font-size: 26px;">Create an Account</h1>
+                    <h4 style="font-family: 'Estrangelo Edessa'; font-size: 19px;text-align: center">It's free!</h4>
+                </div>
+
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="profile_image" type="image" src="../../assets/images/home/newUserSmall.png"
+                                   id="img_signup" style="float: right; width: 100%; height: 60px;margin-top:20px;"/>
+                            <input type="file" id="my_file" style="display: none;"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-model="sign_userName">Username</div>
+                        <input class="form-control" type="text" placeholder="Enter Username" ng-model="sign_userName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">&nbsp;&nbsp;&nbsp;E-Mail&nbsp;&nbsp;&nbsp;</div>
+                        <input class="form-control" type="email" placeholder="john@example.com" ng-model="sign_email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">&nbsp;Password</div>
+                        <input class="form-control" type="password" placeholder="Enter password"
+                               ng-model="sign_password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">&nbsp;&nbsp;Confirm&nbsp;&nbsp;</div>
+                        <input class="form-control" type="password" placeholder="Re-type your password"
+                               ng-model="sign_passwordConfirm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;Promo&nbsp;&nbsp;</div>
+                        <input class="form-control" type="text" placeholder="Promo code (optional)"
+                               ng-model="sign_promoCode">
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="col-xs-12" style="font-family: arial; font-size: 12px;">
+            <h1></h1>
+            By creating an account, I accept <span
+                style="font-family: 'Bodoni MT Condensed'; font-weight: bold; font-size: 13px;">TR<span
+                style="color: mediumseagreen; font-family: 'Bodoni MT Condensed';">4</span>DE ST<span
+                style="color: red; font-family: 'Bodoni MT Condensed';">4</span>R</span> 's <span><a href="#">tems of
+            service</a></span> and <span><a
+                ng-click="changePage_bottombar('PrivacyPolicy')" href="#">privacy policy</a></span> .
+
+            <h1></h1>
+            <button class="btn btn-success btn-primary" style="float: right"
+                    ng-click="SignUP(sign_image, sign_email, sign_userName, sign_password, sign_promoCode);">Sign Up
+            </button>
+
+            <div class="col-xs-12" style="text-align: center">- or -</div>
+        </div>
+
+
+        <div class="col-xs-12">
+            <h1></h1>
+            <a class="btn btn-block btn-facebook" href="https://www.facebook.com/pages/TR4DE-ST4R/305990889536659">
+                <i class="fa fa-facebook">|</i>Sign in with Facebook
+            </a>
+
+            <a class="btn btn-block btn-google-plus" href="https://www.google.com/">
+                <i class="fa fa-google-plus">|</i>Sign in with Google
+            </a>
+
+            <a class="btn btn-block btn-twitter" href="https://www.twitter.com/">
+                <i class="fa fa-twitter">|</i>Sign in with Twitter
+            </a>
+
+            <h1></h1>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<div class="col-xs-12">
+    <table class="table table-striped" style="margin-bottom: 1vh; margin-bottom: 51px;">
+        <tr class="">
+
+            <td style="border-bottom: 1px solid #ddd;">
+                <a id="pop1" onmouseover="changeImage('img1','../../assets/images/home/Techcrunch-Logo.png')"
+                   onmouseout="changeImage('img1','../../assets/images/home/Techcrunch-Logo-Grey1.png')"
+                   href="#" data-toggle="popover" data-placement="top" data-trigger="click" title="" data-content="">
+                    <img id="img1" src="../../assets/images/home/Techcrunch-Logo-Grey1.png"/>
+                </a>
+            </td>
+            <td style="border-bottom: 1px solid #ddd;">
+                <a id="pop2" onmouseover="changeImage('img2','../../assets/images/home/Reuters_logo1.png')"
+                   onmouseout="changeImage('img2','../../assets/images/home/Reuters_logo1_Grey.png')"
+                   href="#" data-toggle="popover" data-placement="top" data-trigger="hover" title="" data-content="">
+                    <img id="img2" src="../../assets/images/home/Reuters_logo1_Grey.png"/>
+                </a>
+            </td>
+            <td style="border-bottom: 1px solid #ddd;">
+                <a id="pop3" onmouseover="changeImage('img3','../../assets/images/home/the-independent-logo.png')"
+                   onmouseout="changeImage('img3','../../assets/images/home/the-independent-logo-Grey.png')"
+                   href="#" data-toggle="popover" data-placement="top" data-trigger="hover" title="" data-content="">
+                    <img id="img3" src="../../assets/images/home/the-independent-logo-Grey.png"/>
+                </a>
+            </td>
+            <td style="border-bottom: 1px solid #ddd;">
+                <a id="pop4" onmouseover="changeImage('img4','../../assets/images/home/city-am-logo-1.png')"
+                   onmouseout="changeImage('img4','../../assets/images/home/city-am-logo-grey3.png')"
+                   href="#" data-toggle="popover" data-placement="top" data-trigger="hover" title="" data-content="">
+                    <img id="img4" src="../../assets/images/home/city-am-logo-grey3.png"/>
+                </a>
+            </td>
+            <td style="border-bottom: 1px solid #ddd;">
+                <a id="pop5" onmouseover="changeImage('img5','../../assets/images/home/techradar-logo1.png')"
+                   onmouseout="changeImage('img5','../../assets/images/home/techradar-logo1-Grey.png')"
+                   href="#" data-toggle="popover" data-placement="top" data-trigger="hover" title="" data-content="">
+                    <img id="img5" src="../../assets/images/home/techradar-logo1-Grey.png"/>
+                </a>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</div>
+</div>
+
+<script>
+  /*  function readURL(input) {
+console.log("readURL ");
+        console.log(input);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img_signup').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#my_file").change(function () {
+        readURL(this);
+    });*/
+    
+    
+     $("input[id='my_file']").change(function () {
+         console.log("input[id='my_file']");
+           
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = imageAccount;
+                reader.readAsDataURL(this.files[0]);
+            
+        };
+     });
+ 
+
+    function imageAccount(e) {
+        $('#img_signup').attr('src', e.target.result);
+    };
+</script>

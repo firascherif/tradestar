@@ -1,0 +1,63 @@
+﻿.blue-selector {
+    background-color: #428bca;
+    border-color: #357ebd;
+    color: white;
+}
+
+
+.customtable {
+}
+
+.customtable:hover {
+
+}
+
+
+.wrap {
+    width: 66.7vw;
+}
+
+.wrap table {
+    width: 66.7vw;
+    /*table-layout: fixed;*/
+}
+
+.customtable.table tr td {
+    padding: 50px;
+    border: none;
+    width: 20vw;
+    word-wrap: break-word;
+}
+
+table.head tr td {
+    background: #eee;
+}
+.customtable.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #D5D5D5;
+}
+.customtable.table>tbody>tr>td, .customtable.table>tfoot>tr>td {
+
+    vertical-align:middle;
+
+}
+
+.over_tableCustom > tbody > tr:hover {
+    background: #ddd; /* Old browsers */
+}
+
+.over_tableCustom > tbody> tr{
+
+}
+
+tbody div{
+
+}
+#scroll {
+        overflow:auto;
+    height:40vh;
+    overflow-x:hidden;
+}
+
+my td:hover { background: #FCF; }
+
+

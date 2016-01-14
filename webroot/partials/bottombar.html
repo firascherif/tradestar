@@ -1,0 +1,117 @@
+<div style="margin-left: 3.7em;">
+
+	
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_about_us.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='AboutUs'">
+    </div>
+
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_contact_us.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='ContactUs'">
+    </div>
+
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_terms_conditions.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='TermsConditions'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_privacy_policy.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='PrivacyPolicy'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_careers.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='Careers'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_cookies.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='Cookies'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_FAQ.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='FAQ'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_donate.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='Donate'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_help.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='Help'">
+    </div>
+
+    <div class="container ng-scope animated bottom-page"
+         ng-include="'partials/bottombar_content_follow_us.html'"
+         ng-class="{ fadeInBottomSlide : bottombar_page, fadeOutBottomSlide : !bottombar_page}"
+         ng-show="bottombar_page=='FollowUs'">
+    </div>
+	
+
+</div>
+
+<!--Valerii-->
+
+
+<div ng-hide="currentPage=='floor'" class="navbar navbar-default navbar-fixed-bottom" style="z-index:10;height:4vh;min-height:5vh;">
+    <div class="container-fluid">
+        <table class="table nav navbar-nav" style="text-align: center; margin-bottom: 0px;">
+            <tr>
+                <td style="padding: 1.3vh 0; color: black;">
+                    <a style="color:black;text-decoration: none;">
+                        <img style="width:75px;height:2vh;" src="../assets/images/navbar_menu/tradestar_logo_ba.png"/>
+                    </a>
+                </td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('AboutUs')">About Us</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('ContactUs')">Contact Us</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('TermsConditions')">Terms &amp; Conditions</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('PrivacyPolicy')">Privacy Policy</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('Careers')">Careers</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('Cookies')">Cookies</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('FAQ')">FAQ</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('Donate')">Donate</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('Help')">Help</a></td>
+                <td style="padding-top: 1.4vh;"><a href="#" style="color: black; text-decoration: none;"
+                                                   ng-click="changePage_bottombar('FollowUs')">Follow Us</a></td>
+                <td style="padding-top: 1.4vh;">
+                    <a href="https://www.twitter.com" style="color: black; text-decoration: none;">
+                        <span class="fa fa-twitter" style="color: #2095c0; font-size:1.5em;"></span>
+                    </a>
+                </td>
+                <td style="padding-top: 1.4vh;">
+                    <a href="https://www.facebook.com/pages/TR4DE-ST4R/305990889536659"
+                       style="color: black; text-decoration: none;">
+                        <span class="fa fa-facebook" style="color: #133783; font-size:1.5em"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="pageOverlay" ng-show="showPageOverlay" ng-click="closeBottom();"></div>

@@ -1,0 +1,114 @@
+.lobby_table_list {
+	background: #eee;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.lobby_table_list > tbody >  tr > * {
+	text-align: center;
+}
+
+.lobby_table_list > tbody >  tr > th {
+	background: #aaa;
+	padding:0.3em;
+	color:black;
+	font-family: arial;
+	font-size: 1.2em;
+	font-weight:normal;
+}
+
+.lobby_table_list > tbody >  tr > td > span {
+	font-size: 1.2em;
+	padding:.5em;
+}
+
+.lobby_table_list > tbody >  tr > td > span.glyphicon-circle-arrow-up{
+	color: green;
+	padding: .5em;
+	cursor: pointer;
+}
+
+.lobby_table_list > tbody >  tr > td > span.glyphicon-circle-arrow-up:hover{
+	color: #0a7;
+}
+
+.lobby_gameCreate_attribute > div.lobby_gameCreate_legend {
+	background: rgb(238, 238, 238);
+	height: 100%;
+	display: inline-block;
+	padding: 0.25em;
+	font-size: 1em;
+	border-radius: 0.4em 0 0 0.4em;
+	text-align: center;
+	border: 1px solid #aaa;
+	border-right: none;
+}
+
+.lobby_gameCreate_attribute > div.bootstrap-select {
+	padding: 0;
+    height: 24px;
+    width: 66.66% !important;
+}
+
+.lobby_gameCreate_attribute > div.bootstrap-select > button {
+	padding: 0.20em;
+    border-radius: 0 0.4em 0.4em 0;
+    border: 1px solid #aaa;
+    width: 100%;
+    background: #ffffff;
+}
+
+.lobby_gameCreate_attribute > div.bootstrap-select > button:focus {
+    -webkit-box-shadow: 0px 0px 8px 0px #3166ff;
+
+}
+
+.lobby_gameCreate_attribute > input,  .lobby_gameCreate_attribute > select{
+	height: 100%;
+	border-radius: 0 0.4em 0.4em 0;
+	border: 1px solid #aaa;
+}
+
+.lobby_gameCreate_attribute > input:focus,  .lobby_gameCreate_attribute > select:focus{
+-webkit-box-shadow: 0px 0px 8px 0px #3166ff;
+
+}
+
+.lobby_gameCreate_attribute {
+	height: 2em;
+	margin-top: 1em;
+}
+
+.listing_tools > div > span:nth-child(2) {
+	margin-top: 100px;
+}
+
+.listing_tools > div {
+	cursor: pointer;
+    color: #777;
+}
+
+.listing_tools > div:hover {
+	/*cursor: no-drop;
+    */
+	background: RGBA(100,100,100,0.1);
+	
+}
+
+.listing_tools > div > span:nth-child(1) {
+	text-align : center;
+}
+
+.listing_tools > div {
+text-align: center;
+height: 10%;
+}
+
+.content_rightBar {
+    overflow-y: auto;
+}
+
+.etoilesWin {
+    color: yellow;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fc0;
+ }

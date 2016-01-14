@@ -1,0 +1,615 @@
+<div ng-class="{custom_sliderIN_RIGHT : rightbar_stat, fadeOutRight: !rightbar_stat}"
+     ng-show="rightbar_stat" class="animated rightbar_master col-xs-11">
+    <div class="col-xs-offset-11 col-xs-1 animated" ng-include="'partials/rightbar.html'"
+         style="margin-left: 92%;background: #ffffff;border-left: 1px solid #cccccc; padding: 0;"></div>
+</div>
+
+<div ng-class="{custom_sliderIN_LEFT : rightbar_stat, fadeOutLeft : !rightbar_stat}" ng-show="rightbar_stat" class="animated col-xs-1"
+     style="height: 35px; position: absolute; left: 0; height: 35px; position: absolute; left: 0; padding: 0; top: 9vh;">
+    <div id="leftBar" class="leftbar_anim" ng-include="'partials/leftbar.html'"
+         style="background: #ffffff;border-right: 1px solid #cccccc;"></div>
+</div>
+
+
+<div class="eliminatorModal col-xs-6 col-xs-offset-3" ng-show="modal_eliminatorPlayers">
+    <h1>Eliminator</h1>
+    <button ng-repeat="player in players_list_eliminate"
+            class="btn btn-primary cursor_red"
+            style="margin: 1em;"
+            ng-click="eliminatePlayer(player.userName);">
+        <h2>{{player.userName}}</h2>
+        <img style="width: 10vw; height: 10vh;" src="../{{player.imgUrl}}">
+    </button>
+</div>
+
+
+
+<div class="col-xs-12" style="position: fixed; height: 100%; top: 0; background: RGBA(0,0,0,0.5);
+z-index: 22; left: 0; width: 100vw;" ng-show="modal_start" id="startModal_window">
+    <h1 style="color: #ffffff; text-align: center; margin-top: 20%; font-size: 5em;">{{start_game_stat}}</h1>
+    <div class="spinner">
+        <div class="bounce1" style="background: #ffffff;"></div>
+        <div class="bounce2" style="background: #ffffff;"></div>
+        <div class="bounce3" style="background: #ffffff;"></div>
+    </div>
+</div>
+
+
+
+<!--<div class="col-xs-12" style="position: fixed; height: 100%; top: 0; background: RGBA(0,0,0,0.5);-->
+<!--z-index: 22;">-->
+<div class="col-xs-12" style="position: fixed; height: 100%; left: 0; width: 100vw; top: 0; background: RGBA(0,0,0,0.5);
+z-index: 22;" ng-show="modal_end">
+    <!--<div id="endModal_part2" style="background: RGBA(255,255,255, 1);-->
+    <!--height: 60vh; width: 40vw; margin-left: 30vw; position: absolute;-->
+    <!--top: 10vh; z-index: 24; padding: 0; border-radius: 1.5em 1.5em 0.5em 0.5em;" class="">-->
+
+    <div ng-show="modal_end_part2" id="endModal_part2" style="background: RGBA(255,255,255, 1);
+     height: 60vh; width: 40vw; margin-left: 30vw; position: absolute;
+    top: 10vh; z-index: 24; padding: 0; border-radius: 1.5em 1.5em 0.5em 0.5em;" class="ng-hide">
+
+        <h1 style="color: white; text-align: center; margin-top: 0;
+        background: black; border-radius: 0.3em 0.3em 0 0;padding: 0.25em;">Game Over</h1>
+        <h2 style="color: #000; text-align: center; margin-bottom: -1.5em;">Ranking
+            <div style="height: 1.5em; text-align: center; font-size: 1.5em; color: #fc0; margin-bottom: 0.6em;
+            margin-top: 0.5em;">
+            <span id="showStarOne" class="fa fa-star ng-hide etoilesWin"></span>
+            <span id="showStarTwo" class="fa fa-star ng-hide etoilesWin"></span>
+            <span id="showStarThree" class="fa fa-star ng-hide etoilesWin"></span>
+            </div>
+        </h2>
+
+
+
+        <table style="width: 100%;" >
+            <tr ng-repeat="playerPicked in rankingPlayers" style="font-weight: bold;">
+                <td style="width: 25%;">
+                    <h3 style="clear: both; padding-left: 0vw;  font-size: 1.4em;
+        margin-top: 3vh;">
+
+            <span style="font-size: 1em; float: left; color: #222; margin: 0.7em 0.5em 0 1em;">
+                {{$index+1}}.
+            </span>
+                        <img style="width: 3vw; height: 5vh; float: left; margin-left: 0.8vw;
+            border-radius: 0.2em; margin-right: 1.35vw;" src="../{{playerPicked.imgUrl}}">
+                    </h3>
+                </td>
+
+
+                <td style="padding-top: 3vh; padding-left: 0;">
+                    <p style="padding-top: 0.5em; text-align: left; font-size: 1.1em;">
+                        {{playerPicked.userName}}
+                    </p>
+                </td>
+                <td
+                        style="padding-left: 0vw; padding-top: 3vh; font-size: 1.1em;">
+                    <span style="color: black;">
+                        <span id="counter_newBalance{{$index}}">{{playerPicked.balance | currency}}</span>
+                    </span>
+
+                </td>
+
+                <td style="padding-left: 0vw; padding-top: 3vh; font-size: 1.1em; width: 30%;">
+                    <span style="color: red;" ng-show="$index != 0"> <span class="counter_gain{{$index}}">-{{tableInfos.buyIn | currency}}</span></span>
+                    <span style="color: green;" ng-show="$index == 0">
+                        <span class="counter_gain{{$index}}">+{{(tableInfos.buyIn * (tableInfos.maxPlayers -1) | currency)}}</span>
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <div style="position: absolute; margin-top: 1em; bottom:2em; width: 100%;">
+            <button class="btn btn-primary col-xs-4 col-xs-offset-1" ng-click="changePage('lobby');">Go to lobby</button>
+            <button class="btn btn-primary col-xs-4 col-xs-offset-2" ng-click="changePage('lobby');">Play again</button>
+        </div>
+    </div>
+
+    <video id="thevideo_win" ng-show="modal_end=='win'" class="end_videoBlock">
+        <source type="video/webm" src="../assets/images/videos/First.webm" />
+        <p>Your browser does not support this video.</p>
+    </video>
+
+    <video id="thevideo_loose"  ng-show="modal_end=='loose'" class="end_videoBlock">
+        <source type="video/webm" src="../assets/images/videos/Second.webm" />
+        <p>Your browser does not support this video.</p>
+    </video>
+
+</div>
+
+<!--<button id="leftBarBtn" class="btn" style="position: absolute; top: 35.5%; font-size: 2em; z-index: 16;-->
+<!--border-radius: 0em 0.2em 0.2em 0; margin-left: -1vw; margin-right: -0.7vw;"-->
+        <!--ng-class="{left_1 : !rightbar_stat, left_15 : rightbar_stat}" ng-click="open_rightbar(this);"><i class="fa fa-list-ul" style="margin-right: 20px;color: #ffffff;"></i></button>-->
+
+<div class="col-xs-9 trading_floor" style="">
+
+    <div style="position: fixed; left: 0.5%; top: 10vh;" ng-style="timer"
+         class="animated" ng-class="{zoomInFast : rightbar_stat, zoomInDelay : !rightbar_stat}">
+
+        <div style="width: 200px; height: 150px;" id="timerAndrew" ></div>
+    </div>
+
+    <div class="table_info col-xs-2 animated left_100" style="padding: 15px;
+    position: fixed; width: 14vw; top: 42vh;" id="tableInfos"
+         ng-class="{zoomInFast : rightbar_stat, zoomInFast : !rightbar_stat}">
+        <h6><span class="fa fa-bookmark"></span>&nbsp;&nbsp;&nbsp;<b>Table Info</b>&nbsp;&nbsp;&nbsp;</h6>
+        <table id="info_table">
+            <tr>
+                <td><h6><b>Name:&nbsp;&nbsp;&nbsp;</b></h6></td><td><h6> {{ tableInfos.tableName}} </h6></td>
+            </tr>
+            <tr>
+                <td><h6><b>Player:&nbsp;&nbsp;&nbsp;</b></h6></td><td><h6> {{ tableInfos.maxPlayers}} </h6></td>
+            </tr>
+            <tr>
+                <td><h6><b>Time:&nbsp;</b></h6></td><td><h6>{{ tableInfos.totalGameTime / 60000}}</h6></td>
+            </tr>
+            <tr>
+                <td><h6><b>Game:&nbsp;&nbsp;&nbsp;</b></h6></td><td><h6><span class="fa fa-bolt"></span>&nbsp;&nbsp;&nbsp;{{ tableInfos.gameType}} </h6></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="table_ranking animated" style="position: fixed;  top: 59vh; width: 17%;" ng-style="left_downInfo"
+         id="leaderboard" ng-class="{zoomInFast : rightbar_stat, zoomInFast : !rightbar_stat}">
+        <h6><span class="fa fa-trophy"></span>&nbsp;&nbsp;&nbsp;<b>Leaderboard</b></h6>
+        <table>
+            <tr>
+                <!--<th><h6><b>Players&nbsp;</b></h6></th>-->
+                <!--<th><h6><b>Volume:</b></h6></th>-->
+            </tr>
+
+            <tr ng-repeat="player in players_board | orderBy:'-totalVolume':reverse">
+                <td>
+                    <h6>{{player.userName}}:&nbsp;</h6>
+                </td>
+                <td>
+                    <h6>{{player.totalVolume | currency }}</h6>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+
+<button id="rightBarBtn" class="btn" ng-click="open_rightbar(this);"
+        style="position: absolute; top: 10.5%; font-size: 1em; z-index: 16; height: 3vh; width: 4.7vw;right:8%;">Menu</button>
+
+<div id="chart-holder" class="col-xs-7">
+    <div ng-repeat="onePlayerProfit in playerMax" ng-style="{{placing_players_profit[$index]}}">
+        <div class="players_profit" ng-show="players_list[$index]" style="">
+            <div>
+                <span><b>{{(players_board[$index].totalVolume - 1000000)/1000 | number:2}}&#37;</b></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="toolbar">
+            <select id="currencySelector" data-highcharts-chart="1">
+                <!--
+                    <option value="AUD/CAD">AUD/CAD</option>
+                    <option value="AUD/CHF">AUD/CHF</option>
+                    <option value="AUD/JPY">AUD/JPY</option>
+                -->
+                <option value="JPY/USD">JPY/USD</option>
+                <option value="EUR/USD" selected="selected">EUR/USD</option>
+            </select>
+
+            <select id="timeSelector" data-highcharts-chart="1">
+                <option value="10000">10 sec</option>
+                <option value="20000">20 sec</option>
+                <option value="30000">30 sec</option>
+                <option value="60000"  selected="selected">1 min</option>
+                <option value="300000">5 min</option>
+                <option value="600000">10 min</option>
+                <option value="900000">15 min</option>
+                <option value="1800000">30 min</option>
+                <option value="3600000">1 hour</option>
+                <option value="14400000">4 hours</option>
+                <option value="43200000">12 hours</option>
+                <option value="86400000">1 Day</option>
+                <option value="604800000">1 Week</option>
+                <option value="2592000000">1 Month</option>
+            </select>
+
+            <select id="chartType">
+                <option value="candlestick" selected="selected">Candle</option>
+                <option value="ohlc">OHLC</option>
+                <option value="line">Line</option>
+                <option value="scatter">Dots</option>
+            </select>
+
+            <div id="zoomButtons">
+                <button id="zoomIn">+</button>
+                <button id="zoomOut">-</button>
+
+            </div>
+            <div id="drawLine">
+                <select id="chooseLine">
+                    <option value="0">No Line</option>
+                    <option value="yAxis">&#8212</option>
+                    <option value="xAxis">|</option>
+                    <option value="diagonal">/</option>
+                </select>
+                <select id="lineColor" style="border: 1px solid #777;">
+                    <option value="#53E690" class="green"></option>
+                    <option value="#5CCFF2" class="blue"></option>
+                    <option value="#FFFFFF" class="white"></option>
+                    <option value="#F5F53D" class="yellow"></option>
+                    <option value="#FF0533" class="red"></option>
+                </select>
+                <button id="removeLines">Delete</button>
+                <select id="fullScreen">
+                    <option value="1"> S  </option>
+                    <option value="2"> M  </option>
+                    <option value="3"> L  </option>
+                </select>
+            </div>
+        </div>
+        <div id="container" class="chart" class="col-xs-12"></div>
+    </div>
+</div>
+
+<div class="players_placements" style="width: 83vw; z-index: 19;margin: 0 auto;">
+    <div ng-repeat="onePlayer in playerMax" class="players_placements_target" ng-style="{{placing_players[$index]}}"
+         ng-class="{player_out : players_list[$index].out}">
+
+        <div class="players_placements_target" ng-click="rejoinGame($index);" ng-hide="players_list[$index]">
+            <a href="#">
+                <img class="img-responsive pull-left" style="width: 59px; height: 60px; padding: 0; margin-top: -5px;"
+                     src="../assets/images/trading_floor/debug/cirlce_44_2.png"></a>
+            <div class="col-xs-offset-6">
+                <div class="user-rect-info-name" style="font-size:0.7em">Waiting for opponent to join</div>
+                <div class="user-rect-info-level" style="margin-left:0.5em;">
+                </div>
+                <div class="user-rect-info-amount"></div>
+                <div class="" alt="" style="border-radius: 0px; float: left; margin-top: -4%; margin-left: 10%;">
+                </div>
+            </div>
+        </div>
+
+        <!--<button class="btn btn-primary" ng-click="rejoinGame($index);" ng-hide="players_list[$index]">Join this table</button>-->
+
+        <!--<button class="btn btn-success" ng-show="players_list[$index]">{{players_list[$index].userName}}</button>-->
+
+        <div class="players_placements_target content_block" ng-show="players_list[$index]">
+            <img class="img-responsive pull-left" style="width: 59px; height: 60px; padding: 0; margin-top: -5px;"
+                 src="../{{players_list[$index].imgUrl}}">
+            <div class="col-xs-offset-5">
+                <div class="user-rect-info-name content_name">{{players_list[$index].userName}}</div>
+                <div class="user-rect-info-level">Level {{players_list[$index].level}}</div>
+                <div class="user-rect-info-amount">{{players_list[$index].freeVolume | currency}}</div>
+                <div class="" alt="" style="border-radius: 0px; float: left; margin-top: -4%; margin-left: 10%;">
+                    <img src="../assets/images/flags/24/Canada.png" style="width: 24px; height: 19px;" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="floor_action_nav nopading"
+     ng-class="{floor_action_nav_deploy: !rightbar_stat,floor_action_nav_small : rightbar_stat}" style="left:0;">
+<div class="floor_position_play col-xs-4" style="padding: 0;">
+
+    <button style="position:absolute;top:10px;right:10px; font-size: 0.8em;" type="button" class="btn btn-danger btn-xs" ng-show="tab_position.length>1" ng-click="action_close_all();">
+        CLOSE ALL
+    </button>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" style="background: #232323; height: 2.9em; padding-left: 11px">
+        <!---->
+        <li class="active" ng-click="changeTabLeft('positions');">
+            <a style="font-weight: bold; font-family: Calibri; font-size: 1em; padding-top: 0.4em; padding-right: 1em; padding-left: 1em; padding-bottom: 0em; height: 2.41em; top: 0.49em; border-bottom-color: white; border-left-width: 0px; border-right-width: 0px;"
+               href="#home" role="tab" data-toggle="tab">
+                <span class="fa fa-long-arrow-up" style="font-size: 1em; top: 0.1em; color: green;"></span>
+                <span class="fa fa-long-arrow-down" style="margin-left: -0.2em; padding-right: 0.5em; top: 0.1em; font-size: 1em; color: red;"></span>
+                Position<span class="badge" ng-show="showNewPositionsBadge && (newPositions > 0)" style="background-color:red; font-size:0.65em; position:relative;top:-1.7em;left:1.6em;">{{newPositions}}</span></a>
+        </li>
+
+        <li ng-click="changeTabLeft('history');">
+            <a style="font-weight: bold; font-family: Calibri; font-size: 1em; padding-top: 0.4em; padding-right: 0.5em; padding-left: 1em; padding-bottom: 0em; height: 2.41em; top: 0.49em; border-bottom-color: white; border-left-width: 0px; border-right-width: 0px;"
+               href="#profile" role="tab" data-toggle="tab" >
+                <span class="fa fa-history" style="padding-right: 0.5em;" ></span>
+                History<span class="badge" ng-show="showNewHistoryBadge && (newHistory > 0)" style="background-color:red; font-size:0.65em; position:relative;top:-1.7em;left:0.6em;">{{newHistory}}</span></a>
+        </li>
+
+        <li ng-click="changeTabLeft('orders');">
+            <a style="font-weight: bold; font-family: Calibri; font-size: 1em; padding-top: 0.4em; padding-right: 0.5em; padding-left: 1em; padding-bottom: 0em; height: 2.41em; top: 0.49em; border-bottom-color: white; border-left-width: 0px; border-right-width: 0px;"
+               href="#messages" role="tab" data-toggle="tab">
+                <span class="fa fa-line-chart" style="padding-right: 0.5em;"></span>
+                Order<span class="badge" ng-show="showNewOrderBadge && (newOrders > 0)" style="background-color:red; font-size:0.65em; position:relative;top:-1.7em;left:1.6em;">{{newOrders}}</span></a>
+        </li>
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="" id="home" ng-show="floor_action_left=='positions'">
+            <div>
+                <p  ng-show="tab_position.length == 0" style="background-color: #fff;color: #000; width: 91%;margin: 4% 0 0 4.5%;padding: 3%;border: 1px solid #777;
+border-radius: 5px;">No positions taken yet</p>
+                <p ng-repeat="position in tab_position" class="border_position"
+                   style="padding-left: 0.4em; font-size: 1em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                       margin-top: 0.4em;">
+                    <b><small>{{$index+1}}.</small> {{position.type}}</b>
+
+                    {{position.tradeVolume | currency}}
+                    <b>{{position.tradeCurrency}} </b>
+                    @ {{position.tradePrice.toFixed(4)}}
+	                 <span style="font-size: 1em; font-weight: bold;"
+                           ng-class="{gain_green: position.gain>0, gain_red: position.gain<0}">{{position.gain.toFixed(3)}}</span>
+                    <button style="float: right; font-size: 0.8em;" type="button" class="btn btn-danger btn-xs" ng-click="action_close($index);">
+                        CLOSE
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <div class="" id="profile" ng-show="floor_action_left=='history'" style="overflow-y: scroll;height: 16em;">
+            <div class="border_position" ng-repeat="story in historyLog" style="padding-left: 1.4em;padding-right: 1.4em; font-size: 1em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                       margin-top: 0.4em;"><b>{{story}}</b></div>
+        </div>
+        <div class="tab-pane fade " id="messages">order</div>
+
+        <!--<div class="tab-pane" id="settings">settings</div>-->
+
+
+    </div>
+
+</div>
+
+
+<div class="floor_action_play col-xs-4" ng-controller="currencySearchCtrl">
+    <div class="col-xs-4">
+        <div class="btn-group btn-group-sm" style="position:relative;z-index:2;">
+            <div style="position:relative;">
+                <div class="inner-addon left-addon" >
+                    <i class="glyphicon glyphicon-search" ng-hide="currencySearchInputHideBuy"></i>
+                    <input type="text" id="currSelectorBuy" class="form-control"  ng-model="search.title" ng-hide="currencySearchInputHideBuy"  ng-blur="hideSearchInputBuy()" style="min-width: 90px;height: 30px;margin-bottom: 0;">
+                </div>
+                <div id="tradeCurrBuy" class="btn btn-default" ng-show="currencySearchInputBuy" ng-click="showSearchInputBuy(this)" style="padding: 5px 5px;font-size: 12px;min-width: 90px;">
+                    <i class='{{pairChoiseBuy.glyphicon1}}'></i><b>/</b><i class='{{pairChoiseBuy.glyphicon2}}'></i><span class="visible-lg-inline-block"><b>{{pairChoiseBuy.title}}</b>&nbsp;&nbsp;&nbsp;</span><span class="caret hidden-xs"></span></div>
+            </div>
+
+            <div id="currListBuy" class="form-group form-inline" style="position:relative;z-index:1;margin-bottom: 0;" ng-hide="currencySearchInputBuy">
+                <ul class="list-group" style="position:absolute;height: 160px;overflow: auto;width: 100%;">
+                    <li class="list-group-item currPair"   ng-repeat="pair in pairs.cast | filter:search" style="padding: 5px 14px;font-size: 10px;min-width: 90px;cursor: pointer;border: none;"><div ng-click="choosePairBuy(this)">
+                        <i class='{{pair.glyphicon1}}'></i><b>/</b><i class='{{pair.glyphicon2}}'></i><span class="visible-lg-inline-block"><b>{{pair.title}}</b></span></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-8">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control floor_price" placeholder="{{pick_buy_value | currency}}">
+                <span class="input-group-btn floor_button_action">
+                    <button class="btn btn-success" onclick="play_multi_sound('multiaudio1')" ng-click="action_buy(pick_buy_value); pick_sell_value=0; pick_buy_value=0;"><span class="gly_space glyphicon glyphicon-arrow-up"></span><span class="hidden-sm hidden-xs">&nbsp;&nbsp;&nbsp;BUY&nbsp;&nbsp;&nbsp</span></button>
+                </span>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12">
+        <input type="range" name="points1" id="cool"
+               min="0" max="{{buy_max}}" step="0.1"
+               ng-model="pick_buy_value" class="buy_glow_slider">
+    </div>
+
+    <div class="col-xs-4">
+        <div class="btn-group btn-group-sm" style="position:relative;z-index:1;">
+            <div style="position:relative;">
+                <div class="inner-addon left-addon" >
+                    <i class="glyphicon glyphicon-search" ng-hide="currencySearchInputHideSell"></i>
+                    <input type="text" id="currSelectorSell" class="form-control"  ng-model="search.title" ng-hide="currencySearchInputHideSell" ng-blur="hideSearchInputSell()" style="min-width: 90px;height: 30px;">
+                </div>
+                <div id="tradeCurrSell" class="btn btn-default" ng-show="currencySearchInputSell" ng-click="showSearchInputSell(this)" style="padding: 5px 5px;font-size: 12px;min-width: 90px;">
+                    <i class='{{pairChoiseSell.glyphicon1}}'></i><b>/</b><i class='{{pairChoiseSell.glyphicon2}}'></i><span class="visible-lg-inline-block"><b>{{pairChoiseSell.title}}</b>&nbsp;&nbsp;&nbsp;</span><span class="caret hidden-xs"></span></div>
+            </div>
+
+            <div id="currListSell" class="form-group form-inline" style="position:relative;z-index:1;margin-bottom: 0;" ng-hide="currencySearchInputSell">
+                <ul class="list-group" style="position:absolute;height: 160px;overflow: auto;">
+                    <li class="list-group-item currPair"   ng-repeat="pair in pairs.cast | filter:search" style="padding: 5px 14px;font-size: 10px;min-width: 90px;cursor: pointer;border: none;"><div ng-click="choosePairSell(this)">
+                        <i class='{{pair.glyphicon1}}'></i><b>/</b><i class='{{pair.glyphicon2}}'></i><span class="visible-lg-inline-block"><b>{{pair.title}}</b></span></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-8">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control floor_price" placeholder="{{pick_sell_value | currency}}">
+                <span class="input-group-btn floor_button_action">
+                    <button class="btn btn-danger" ng-click="action_sell(pick_sell_value); pick_sell_value=0; pick_buy_value=0;">
+                        <span class="gly_space glyphicon glyphicon-arrow-down"></span><span class="hidden-sm hidden-xs">&nbsp;&nbsp;&nbsp;SELL&nbsp;&nbsp;&nbsp</span></button>
+                </span>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <input type="range" name="points2"
+               min="0" max="{{sell_max}}" step="0.1"
+               ng-model="pick_sell_value;" class="sell_glow_slider">
+    </div>
+	<table style="width:100%">
+		<tr >
+			<td><button class="btn btn-success btn-sm" style="font-weight: bold;padding-left:4px;width:50px;height:30px;border-radius: 50%;margin-right: 20px;margin-bottom: 5px;" ng-click="action_buy(buy_max);">ALL IN</button></td>
+			<td><button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/4;">Buy 1/4</button></td>
+			<td><button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/2;">Buy 1/2</button></td>
+			<td><button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/4*3;">Buy 3/4</button></td>
+			<td><button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max;">Buy Max</button></td>
+		</tr>
+		<tr>
+			<td><button class="btn btn-danger btn-sm" style="font-weight: bold;padding-left:4px;width:50px;height:30px;border-radius: 50%" ng-click="action_sell(sell_max);">ALL IN</button></td>
+			<td><button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/4;" style="padding-left: 11px;">Sell 1/4</button></td>
+			<td><button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/2;" style="padding-left: 11px;">Sell 1/2</button></td>
+			<td><button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/4*3;" style="padding-left: 12px;">Sell 3/4</button></td>
+			<td><button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max;" style="padding-left: 11px;">Sell Max</button></td>
+		</tr>
+	</table>
+	
+ <!--   <div style="float: left;padding-left: 8px;" ng-style="allInBtn">
+        <button class="btn btn-success btn-sm" style="font-weight: bold;padding-left:4px;width:50px;height:30px;border-radius: 50%;margin-right: 20px;margin-bottom: 5px;" ng-click="action_buy(buy_max);">ALL IN</button>
+        <button class="btn btn-danger btn-sm" style="font-weight: bold;padding-left:4px;width:50px;height:30px;border-radius: 50%" ng-click="action_sell(sell_max);">ALL IN</button>
+    </div>
+    <div style="float: right;margin: 15px 15px 15px 0">
+        <button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/4;">Buy 1/4</button>
+        <button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/2;">Buy 1/2</button>
+        <button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max/4*3;">Buy 3/4</button>
+        <button class="btn btn-success btn-sm" ng-click=" pick_buy_value=buy_max;">Buy Max</button>
+    </div>
+    <div style="float: right;margin-right: 15px;">
+        <button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/4;" style="padding-left: 11px;">Sell 1/4</button>
+        <button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/2;" style="padding-left: 11px;">Sell 1/2</button>
+        <button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max/4*3;" style="padding-left: 12px;">Sell 3/4</button>
+        <button class="btn btn-danger btn-sm" ng-click="pick_sell_value=sell_max;" style="padding-left: 11px;">Sell Max</button>
+    </div>
+-->	
+</div>
+
+<div class="floor_tchat col-xs-4" style="padding: 0px;">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" style="background: #232323; height: 2.9em; padding-left: 11px">
+        <li><a style="font-weight: bold; font-family: Calibri; font-size: 1em; padding-top: 0.4em; padding-right: 2em; padding-left: 1em; padding-bottom: 0em; height: 2.41em; top: 0.49em; border-bottom-color: white; border-left-width: 0px; border-right-width: 0px;"
+               href="#chat" role="tab" data-toggle="tab" ng-click="enableNewsNotifier()">
+            <span class="glyphicon glyphicon-comment" style="padding-right: 1em; font-size: 1em; top: 0.2em"></span>
+            Chat<span class="badge" ng-show="showChatBadge && (unreadMessages > 0)" style="background-color:red; font-size:0.65em;font-weight:bold; position:relative;top:-1.7em;left:3.1em;">{{unreadMessages}}</span></a></li>
+        <li class="active"><a style="font-weight: bold; font-family: Calibri; font-size: 1em; padding-top: 0.4em; padding-right: 2em; padding-left: 1em; padding-bottom: 0em; height: 2.41em; top: 0.49em; border-bottom-color: white; border-left-width: 0px; border-right-width: 0px;"
+                              href="#news" role="tab" data-toggle="tab" ng-click="enableChatNotifier()">
+            <span class="fa fa-newspaper-o" style="padding-right: 1em; top: 0.2em;"></span>
+            Breaking News<span class="badge" ng-show="showNewsBadge && (unreadNews > 0)" style="background-color:red; font-size:0.65em;font-weight:bold; position:relative;top:-1.7em;left:3.7em;">{{ unreadNews }}</span></a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade" id="chat">
+
+            <div style="padding-left: 2px; padding-right: 2px;">
+
+                <div id="chat_message_box" style="overflow: scroll; width: 100%; height: 19vh; padding: 5px; overflow-x: hidden">
+
+                    <div ng-repeat="msg in tchat_messages"  ng-class="{bubble_blue : msg.userName!=Auth.userName, bubble_green : msg.userName==Auth.userName}">
+                        <div>
+                            <b>{{msg.userName}}</b> : <small>&nbsp;&nbsp;{{msg.message}}</small>
+                        </div>
+
+                    </div>
+                </div>
+
+                <form ng-submit="send_message_chat(content_message_chat); content_message_chat=''">
+                    <input style="background: white; position: absolute; border-radius: 5px 5px 5px 5px; height: 2em; width: 79%;"
+                           placeholder="Enter your message.." ng-model="content_message_chat">
+                    <button class="btn btn-success btn-xs" type="submit" value="Send"
+                            style="float: right; width: 20%; height: 27px;">
+                        Send</button>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="tab-pane fade  in active col-xs-12" id="news" ng-controller='FeedCtrl'>
+            <div id="feedList">
+                <ul class="list-group">
+                    <li class="list-group-item newsItem" ng-repeat="feed in feeds | orderBy:'publishedDate'" onclick='expandNews(this)' >
+                        <div class="row">
+                            <div class="col-xs-2" style="font-size: 11px;">
+                                <img ng-src="assets/images/rss_feeds/{{feed.sourceTitle | limitTo:3 }}.jpg"  alt="{{feed.sourceTitle}}" title="{{feed.sourceTitle | limitTo:3 }}" class="img-rounded" />
+                            </div>
+                            <div class="col-xs-10" style="font-size: 12px;">
+                                <span class="fa fa-close closeNewsItem" onclick='closeNews(this)'></span>
+                                <p id="postTitle">{{feed.title  | limitTo:40}}<span class="postTime pull-right" >{{feed.publishedDate | date:"dd MMM"}} {{feed.publishedDate | date:"H:mm"}}</span></p>
+                                <p class="contentSnippet" >{{feed.contentSnippet | limitTo:110 }}...</p>
+                                <p class="postContent" style="display: none; margin-top: 5px">{{feed.content }}<br/><br/>
+                                    <a href="{{feed.link}}" target="_blank" id="postTitle">Read more >>></a><br/></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountMessage.html'" ng-show="rightbar_page=='message'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class=" animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountMyAccount.html'" ng-show="rightbar_page=='MyAccount'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class=" animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountShop.html'" ng-show="rightbar_page=='Shop'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class="animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountPerformance.html'" ng-show="rightbar_page=='Performance'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class=" animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountProfile.html'" ng-show="rightbar_page=='Profile'" onload="loadTradestarExperience();"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class="animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountSchedule.html'" ng-show="rightbar_page=='Schedule'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class=" animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountSettings.html'" ng-show="rightbar_page=='Settings'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+<div class="animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountAlerts.html'" ng-show="rightbar_page=='Alerts'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 9vh; left:8.3vw; width:84.5vw; height:86.2vh; z-index: 18;">
+</div>
+
+
+<audio id="multiaudio1" src="../assets/images/trading_floor/chips.wav" preload="auto"></audio>
+
+<script type="text/javascript">
+
+    var channel_max = 10; // number of channels
+    audiochannels = new Array();
+    for (a = 0; a < channel_max; a++) { // prepare the channels
+        audiochannels[a] = new Array();
+        audiochannels[a]['channel'] = new Audio();// create a new audio object
+        audiochannels[a]['finished'] = -1;// expected end time for this channel
+    }
+    function play_multi_sound(s) {
+        for (a = 0; a < audiochannels.length; a++) {
+            thistime = new Date();
+            if (audiochannels[a]['finished'] < thistime.getTime()) { // is this channel finished?
+                audiochannels[a]['finished'] = thistime.getTime() + document.getElementById(s).duration * 1000;
+                audiochannels[a]['channel'].src = document.getElementById(s).src;
+                audiochannels[a]['channel'].load();
+                audiochannels[a]['channel'].play();
+                break;
+            }
+        }
+    }
+</script>
+
+<script>
+    $(".dropdown-menu li a").click(function () {
+        var selText = $(this).html();
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + '<span class="caret"></span>');
+    });
+</script>
+
+<script src="assets/scripts/draggable-points.js"></script>
+<script src="assets/scripts/chart.js"></script>

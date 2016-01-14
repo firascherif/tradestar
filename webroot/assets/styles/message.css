@@ -1,0 +1,6 @@
+﻿.new_navpill {
+}
+.new_navpill.nav-pills>li.active>a, .new_navpill.nav-pills>li.active>a:hover, .new_navpill.nav-pills>li.active>a:focus {
+color: #fff;
+background-color: gainsboro;
+}

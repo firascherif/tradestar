@@ -1,0 +1,234 @@
+﻿#clock {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec, #min, #hour {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+
+/*Second Clock*/
+
+        #clock2 {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec2, #min2, #hour2 {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec2 {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min2 {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour2 {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+
+
+        /*Third Clock*/
+
+        #clock3 {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec3, #min3, #hour3 {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec3 {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min3 {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour3 {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+
+
+                /*Fourth Clock*/
+
+        #clock4 {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec4, #min4, #hour4 {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec4 {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min4 {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour4 {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+
+
+                /*Fifth Clock*/
+
+        #clock5 {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec5, #min5, #hour5 {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec5 {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min5 {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour5 {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+
+                /*Sixth Clock*/
+
+        #clock6 {
+        	position: relative;
+        	width: 100px;
+        	height: 100px;
+        	/*margin: 0px auto 0 auto;*/
+        	background: url(images/newclockface3.png);
+        	list-style: none;
+        	}
+        
+        #sec6, #min6, #hour6 {
+        	position: absolute;
+        	width: 5px;
+        	height: 100px;
+        	top: 0px;
+        	left: 48px;
+        	}
+        
+        #sec6 {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min6 {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour6 {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }

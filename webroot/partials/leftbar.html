@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="/assets/styles/bootstrap.min.css">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            placement: 'left'
+        });
+    });
+</script>
+
+
+<div class="listing_tools " style="background: white; margin:0; overflow: hidden;
+ float:right; width:190px; -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);">
+    <div class="col-xs-12 " style="padding-top: 15px; height:100px; ">
+        <div class="form-group">
+            <div class="inner-addon right-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input type="text" class="form-control" style="height: 25px" placeholder="Search players" ng-model="playerSearch"/>
+            </div>
+        </div>
+        <h6><b>Friends online {{friendsList.length}}</b></h6>
+    </div>
+    <div>
+
+        <a href="#" ng-repeat="friend in friendsList | filter:playerSearch" class="btn friend" tabindex="0" data-toggle="popover"
+           data-content="Simple popup">
+            <img style="float:left" ng-src="{{friend.imgUrl}}"  width="50" height="50"/>{{friend.username}}
+        </a>
+
+        
+
+        <h6></h6>
+        <button class="disabled btn btn-success btn-xs btn-block" Style="margin-top:0px" value="Invite Friends">Invite
+            Friends
+        </button>
+        <br>
+    </div>
+
+    <div class="col-xs-12" style="padding: 0 0 20px 0;">
+
+        <div class="col-xs-6" style="padding-right: 7px;">
+            <img src="../assets/images/trading_floor/debug/Spinning_Chip6.gif" style="width:100%;border-radius:5px;"/>
+
+        </div>
+
+        <div class="col-xs-6" style="padding-left: 7px">
+            <img src="../assets/images/trading_floor/debug/Transfer_Chip6.gif" style="width:100%;border-radius:5px;"/>
+
+        </div>
+
+
+    </div>
+
+    <div style="padding: 15px 15px 15px 15px;">
+        <button class="btn btn-xs btn-block btn-danger"
+                ng-click="openReloadChipsDialog();">
+            <span class="fa fa-refresh">Reload</span>
+        </button>
+    </div>
+    
+   
+</div>
+
+
+<div id="friendsPopover" class="popover">
+    <div class="arrow"></div>
+    <h3 class="popover-title">JavaScript Access</h3>
+
+    <div class="popover-content">
+        This popup was created and loaded using javascript rather than
+        data tags
+    </div>
+</div>
+
+
+
+
+<script>
+    /*  $(function(){
+     $("[data-toggle=popover]").popover();
+     });*/
+</script>

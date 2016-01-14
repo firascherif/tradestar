@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>TR4DE ST4R</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+    <body>
+        <form class="navbar-form navbar-right animated" role="search"  style="margin-top:350px;margin-right:400px;" method="post" action="/signIn">
+                <div class="form-group">
+                <div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+         <input name="radio" value="0" type="radio"  checked aria-label="...">
+      </span>
+    <div>Tradestar</div>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input name="radio" value="1" type="radio" aria-label="...">
+      </span>
+      <div>Control room</div>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+    
+                
+                    
+                    
+                    
+                    <input id='username' type="text"  required class="form-control" placeholder="Username" autofocus>
+                    <input id='password' type="password" required class="form-control" placeholder="Password">
+                </div>
+                <input type="submit" class="btn btn-success"  value='Submit'>
+              
+        </form>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript">
+            
+            $("tradestar")
+            
+              $( "form" ).submit(function( event ) {
+              event.preventDefault();
+              var username = $('#username').val();
+              var password = $('#password').val();
+                  console.log(username);
+                  
+                var clientType =  $('input[name=radio]:checked').val();
+            
+
+              jQuery.get( "/login/"+username+"/"+password ,{},function(data){
+                    console.log(JSON.stringify(data));
+                  
+                  
+                  if(clientType == "1")
+                        window.location.replace("/controlroom");
+                  else
+                      
+                  
+                      window.location.replace("/index");
+                } )
+              });
+
+        </script>
+        
+    </body>
+</html>
+

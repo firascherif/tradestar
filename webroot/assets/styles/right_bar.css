@@ -1,0 +1,79 @@
+﻿/* tab color */
+.custom_tab {
+}
+.custom_tab.nav-tabs>li>a {
+    background-color: white;
+    color:royalblue;
+    border: 0px solid white;
+}
+
+/* active tab color */
+.custom_tab.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: black;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-bottom-color:transparent;
+    
+    /*padding-bottom:0.5em;*/
+}
+
+/* hover tab color */
+.custom_tab.nav-tabs>li>a:hover {
+    border-color: lightgrey;
+    background-color: lightgray;
+    color:#ff9f00
+}
+.custom_tab.tab-content>.active {
+display: block;
+border: 1px solid lightgray;
+}
+
+/*tab pane*/
+.new_tab_pane {
+}
+.new_tab_pane.tab-content>.active {
+display: block;
+border: thin solid lightgray;
+}
+
+
+
+.box_border {
+    border-radius:5px;
+    color:white;
+}
+
+.new_button_color {
+    background-image:linear-gradient(to bottom,#7F6047 0,#33271E 100%);
+    color:white;
+}
+.new_button_color:hover, .new_button_color:focus {
+background-image:linear-gradient(to bottom,#33271E 0,#7F6047 100%);
+background-position: 0 -15px;
+color:white;
+}
+
+div.background_filter_message {
+    background: RGBA(0,0,0,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 12;
+}
+
+/*Modal Container*/
+div.modal_container_message {
+    position: fixed;
+    top: 14.5%;
+    z-index: 12;
+    left:16.2%;
+    
+}
+
+#pop_up{
+    z-index:15;
+}
+
+.modal-backdrop.in{
+    z-index:1;
+}

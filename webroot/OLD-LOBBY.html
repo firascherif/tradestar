@@ -1,0 +1,132 @@
+<div class="col-xs-12 trading_floor" style="padding: 0; margin-top: 85px; margin-bottom: 10px;">
+
+
+    <div id="leftBar" class="col-xs-1" ng-include="'partials/leftbar.html'"
+         style="background: #ffffff; margin-top: 0em; height: 86vh; position: fixed; left: 0;">
+    </div>
+
+    <div class="col-xs-10"></div>
+
+    <!--
+    <div class="col-xs-8" style="position:absolute; left:16.7%; top:2vh;border: 1px solid #D5CDCD; background: white;
+    padding-right: 0;">
+        <div ng-include="'partials/world_clock.html'">
+
+        </div>
+    </div>
+    -->
+
+
+    <div class="col-xs-8 col-xs-offset-2"
+         style="background:#eee;padding:0; top: 38vh;
+         border: 1px solid #D5CDCD;border-left: 1px solid #D5CDCD; ">
+
+        <div class="" style="height:40vh;overflow:auto;">
+            <table class="head fancyTable table table-strip" id="myTable2"
+                   style="margin: 0; text-align: center; font-size: 0.9em;">
+                <thead>
+                <tr>
+                    <th style="text-align: center; width: 16%; background-color: #c2beba;">Name</th>
+                    <th style="text-align: center; width: 14%; background-color: #c2beba;">Buy-in</th>
+                    <th style="text-align: center; width: 14%; background-color: #c2beba;">Players</th>
+                    <th style="text-align: center; width: 14%; background-color: #c2beba;">Type</th>
+                    <th style="text-align: center; width: 14%; background-color: #c2beba;">Time</th>
+                    <th style="text-align: center; width: 14%; background-color: #c2beba;">Private</th>
+                    <th style="text-align: center; width: 14%; background-color:#c2beba;">View table</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!--<td colspan="7" style="padding: 0;"></td>
+                    <div class="customtable scrollit" style="width: 100%;"></div>-->
+                <!--<table class="customtable table-hover" id="scroll" style="width: 100%;"></table>-->
+                <tr ng-repeat="table in andrew_tables" style="cursor: pointer; font-size: 0.888em; height:2vh;"
+                    ng-click="animateFadeFloorIn(table.tableName);">
+
+                    <td style=" border: none; width: 16%">{{table.tableName}}</td>
+                    <td style=" border: none; width: 14%">${{table.buyIn}}</td>
+                    <td style=" border: none; width: 14%">{{table.totalPlayers}}/{{table.maxPlayers}}</td>
+                    <td style=" border: none; width: 14%"><span class="fa fa-bolt" style="padding-right: 0.4vh;"></span>{{table.gameType}}
+                    </td>
+                    <td style=" border: none; width: 14%">{{table.totalGameTime/60000}}</td>
+                    <td style=" border: none; width: 14%"><span class="fa fa-lock"></span></td>
+                    <td style=" border: none; width: 14%">
+                        <button class="btn btn-xs btn-default" style="padding: 0;">
+                            <span style="padding-left: 1em; padding-right: 1em; display: inline-block;"
+                                  class="glyphicon glyphicon-play"></span>
+                        </button>
+
+                    </td>
+                </tr>
+
+
+                </tbody>
+
+
+            </table>
+        </div>
+
+    </div>
+
+    <!--
+
+    <div class="col-xs-2 col-xs-offset-8" style="top: 38.5vh;padding-right: 0;">
+        <button style=""
+                class="btn btn-xs btn-success pull-right"
+                ng-click="modal_on='createTable';
+			modal_open_createTable='create';">
+            Create table
+        </button>
+    </div>
+    -->
+
+    <div class="col-xs-1 col-xs-offset-1 nopading" ng-include="'partials/rightbar.html'"
+         style="z-index: 3; margin-top: 0.5em; position: fixed; right: 0;">
+    </div>
+</div>
+
+<!--
+
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountMessage.html'" ng-show="rightbar_page=='message'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountMyAccount.html'" ng-show="rightbar_page=='MyAccount'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountShop.html'" ng-show="rightbar_page=='Shop'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountPerformance.html'" ng-show="rightbar_page=='Performance'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountProfile.html'" ng-show="rightbar_page=='Profile'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountSchedule.html'" ng-show="rightbar_page=='Schedule'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountSettings.html'" ng-show="rightbar_page=='Settings'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+<div class="col-xs-10 col-xs-offset-1 animated content_rightBar"
+     ng-include="'partials/rightbar_content_accountAlerts.html'" ng-show="rightbar_page=='Alerts'"
+     ng-class="{ fadeInRightSlide : rightbar_page, fadeOutRightSlide : !rightbar_page}"
+     style="background: #ffffff; position: absolute; top: 1vh; padding: 0; height: 800px; z-index: 3;">
+</div>
+
+</div>
+-->

@@ -1,0 +1,121 @@
+﻿
+/* tab color */
+.side_setting_tab {
+}
+.side_setting_tab.nav-tabs>li>a {
+    background-color: white;
+    color:#666;
+    border: 1px solid lightgray;
+    border-left:0;
+    border-radius:0;
+   /*-moz-box-shadow:    inset -5px 0px 8px rgba(37, 37, 32, 0.2);
+   -webkit-box-shadow: inset -5px 0px 8px rgba(37, 37, 32, 0.2);
+   box-shadow:         inset -5px 0px 8px rgba(37, 37, 32, 0.2);*/
+
+   /*box-shadow: inset -10px 0 5px -5px hsla(0,0%,0%,.25);*/
+   box-shadow:-8px 0px 15px -10px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* active tab color */
+.side_setting_tab.nav-tabs>li.active>a, .side_setting_tab.nav-tabs>li.active>a:hover, .side_setting_tab.nav-tabs>li.active>a:focus {
+    color: #D74B4B;
+    background-color: white;
+     border: 1px solid lightgray;
+    border-left:0;
+    border-right:0;
+    box-shadow: inset 0px 0 0px 0px hsl(0, 0%, 100%);
+    
+    /*padding-bottom:0.5em;*/
+}
+
+/* hover tab color */
+.side_setting_tab.nav-tabs>li>a:hover {
+    border-color: lightgrey;
+    background-color: #F4F4F4;
+    color:#666;
+}
+.side_setting_tab.tab-content>.active {
+display: block;
+border: 1px solid lightgray;
+}
+
+/*tab pane*/
+.side_settingtab_pane {
+}
+.side_settingtab_pane.tab-content>.active {
+display: block;
+border-top: 1px solid lightgray;
+padding-left: 1em;
+padding-top:4vh
+}
+
+/*SKIN SELECT*/
+
+.general_skin1 {
+background:url(../images/skins/blueskin.png) repeat;
+background-size: auto;
+ border-radius:1px;
+}
+
+.general_skin1:hover {
+background:dodgerblue;
+background-image:none;
+}
+
+.general_skin2 {
+background:url(../images/skins/greenskin.jpg) no-repeat;
+background-size: 32vh;
+ border-radius:1px;
+}
+
+.general_skin2:hover {
+background:#008000;
+background-image:none;
+}
+
+.general_skin3 {
+background:url(../images/skins/yellowgoldskin.jpg) no-repeat;
+background-size: 32vh;
+ border-radius:1px;
+}
+
+.general_skin3:hover {
+background:goldenrod;
+background-image:none;
+}
+
+.skin1 {
+background:url(../images/skins/blueskin.png) repeat;
+background-size: auto;
+ border-radius:1px;
+ margin-bottom:1vh;
+}
+
+.skin1:hover {
+background:dodgerblue;
+background-image:none;
+}
+
+.skin2 {
+background:url(../images/skins/greenskin.jpg) no-repeat;
+background-size: 32vh;
+ border-radius:1px;
+ margin-bottom:1vh;
+}
+
+.skin2:hover {
+background:#008000;
+background-image:none;
+}
+
+.skin3 {
+background:url(../images/skins/yellowgoldskin.jpg) no-repeat;
+background-size: 32vh;
+ border-radius:1px;
+ margin-bottom:1vh;
+}
+
+.skin3:hover {
+background:goldenrod;
+background-image:none;
+}

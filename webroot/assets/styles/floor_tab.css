@@ -1,0 +1,25 @@
+﻿/* tab color */
+.floor_tab {
+}
+.floor_tab.nav-tabs>li>a {
+    background-color: #333333;
+    border-color: transparent;
+    color:white;
+}
+
+/* active tab color */
+.floor_tab.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: black;
+    background-color: white;
+    border: 1px solid white;
+    border-bottom-color:white;
+    /*padding-bottom:0.5em;*/
+}
+
+/* hover tab color */
+.floor_tab.nav-tabs>li>a:hover {
+    border-color: #333333;
+    background-color: white;
+    color:black;
+}
+

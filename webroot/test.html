@@ -1,0 +1,30 @@
+
+<html ng-app = "scopeExample">
+
+
+<head>
+
+</head>
+
+<body>
+
+	<div ng-controller ="MyController">
+
+	</div>
+
+<script>
+angular.module('scopeExample', [])
+  .controller('MyController', ['$scope', function($scope) {
+    $scope.username = 'Worgjgjjdgdgpauld';
+
+    $scope.sayHello = function() {
+      $scope.greeting = 'Hello ' + $scope.username + '!';
+    };
+  }]);
+
+
+</script>
+	</body>
+</html>
+
+

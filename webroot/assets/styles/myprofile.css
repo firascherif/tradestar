@@ -1,0 +1,51 @@
+﻿/* tab color */
+.custom_profile_tab {
+}
+.custom_profile_tab.nav-tabs>li>a {
+    background-color: #47B7CB;
+    color:white;
+    border: 0px solid white;
+}
+
+/* active tab color */
+.custom_profile_tab.nav-tabs>li.active>a, .custom_profile_tab.nav-tabs>li.active>a:hover, .custom_profile_tab.nav-tabs>li.active>a:focus {
+    color: white;
+    background-color: #47AABB;
+    border: 0px solid lightgrey;
+    border-bottom-color:transparent;
+    
+    /*padding-bottom:0.5em;*/
+}
+
+/* hover tab color */
+.custom_profile_tab.nav-tabs>li>a:hover {
+    border-color: lightgrey;
+    background-color: #47AABB;
+    color:white;
+}
+.custom_profile_tab.tab-content>.active {
+display: block;
+border: 1px solid lightgray;
+}
+
+/*tab pane*/
+.new_profiletab_pane {
+}
+.new_profiletab_pane.tab-content>.active {
+display: block;
+border: thin solid lightgray;
+}
+
+/*Profile Picture*/
+.img-circle {
+    border-radius: 50%;
+}
+.img-thumbnail {
+    padding: 4px;
+    line-height: 1.42857;
+    background-color: #FFF;
+    border: 3px solid #DDD;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out 0s;
+    display: inline-block;
+}   

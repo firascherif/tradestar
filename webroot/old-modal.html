@@ -1,0 +1,116 @@
+<div class="modal_filter col-xs-12" ng-show="modal_on"
+     ng-click="modal_on=''; modal_open_createTable='';"></div>
+
+<div class="modal_createTable col-lg-4 col-lg-offset-2"
+     ng-show="modal_open_createTable" style="padding: 0;">
+    <h2 style="background: black; margin-top: 0; text-align: center; color: white; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-radius: 0.3em 0.3em 0 0; font-size: 1.3em; padding: 0.6em;">
+        Option Creating Game</h2>
+
+    <div class="container-fluid">
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Buyin value</div>
+            <select class="col-xs-8" ng-model="paramCreate.buyIn"
+                    ng-options="item as item for item in [100,1000,10000,100000,1000000]">
+
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Type of Game</div>
+            <select class="col-xs-8" ng-model="paramCreate.gameType" ng-change="update_gameChange()">
+                <option value="Fourty four" selected="selected">Fourty four</option>
+                <option value="Eliminator">Eliminator</option>
+                <option value="Survivor">Survivor</option>
+                <option value="Hit & Run">Hit & Run</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Players number</div>
+            <select ng-model="paramCreate.maxPlayers" class="number_player_pick"
+                    ng-options="item as item for item in [2,3,4,5,6,7,8]"
+                    style="width: 66%; padding-left: 1em;"></select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Currencies</div>
+            <select class="col-xs-8">
+                <option>EUR/USD</option>
+                <option>LIVRE/EUR</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute" ng-show="!game_timeExtend && !game_timeExtend_hit">
+            <div class="col-xs-4 lobby_gameCreate_legend">Game Time</div>
+            <select class="col-xs-8" ng-model="paramCreate.totalGameTime" required="required">
+                <option value="30000">30 secondes</option>
+                <option value="60000">1 minute</option>
+                <option value="180000">3 minutes</option>
+                <option value="300000">5 minutes</option>
+                <option value="600000" selected="selected">10 minutes</option>
+                <option value="900000">15 minutes</option>
+                <option value="1200000">20 minutes</option>
+                <option value="1500000">25 minutes</option>
+                <option value="1800000">30 minutes</option>
+                <option value="2700000">45 minutes</option>
+                <option value="3600000">60 minutes</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute" ng-show="game_timeExtend">
+            <div class="col-xs-4 lobby_gameCreate_legend">roundGameTime</div>
+            <select class="col-xs-8" ng-model="paramCreate.roundGameTime" required="required">
+                <option value="30000">30 secondes (dev mode)</option>
+                <option value="60000">1 minute</option>
+                <option value="180000">3 minutes</option>
+                <option value="300000">5 minutes</option>
+                <option value="600000" selected="selected">10 minutes</option>
+                <option value="900000">15 minutes</option>
+                <option value="1200000">20 minutes</option>
+                <option value="1500000">25 minutes</option>
+                <option value="1800000">30 minutes</option>
+                <option value="2700000">45 minutes</option>
+                <option value="3600000">60 minutes</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute" ng-show="game_timeExtend_hit">
+            <div class="col-xs-4 lobby_gameCreate_legend">Goal</div>
+            <select class="col-xs-8" ng-model="paramCreate.hitAndRunAmount" required="required">
+                <option value=10>10 $</option>
+                <option value=200>200 $</option>
+                <option value=300>300 $</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Trade Limit</div>
+            <select class="col-xs-8">
+                <option>1 trade</option>
+                <option>2 trades</option>
+                <option>3 trades</option>
+                <option>5 trades</option>
+                <option>10 trades</option>
+                <option>20 trades</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 lobby_gameCreate_attribute">
+            <div class="col-xs-4 lobby_gameCreate_legend">Game visibility</div>
+            <select class="col-xs-8">
+                <option>Public</option>
+                <option>Private</option>
+            </select>
+        </div>
+
+        <button class="btn btn-sm btn-success pull-left" style="margin-top: 1.4em; margin-left: 1em; "
+                ng-click="create_table(paramCreate);">Create a Game
+        </button>
+        <button class="btn btn-sm btn-default pull-left" style="margin-left: 1em; margin-top: 1.4em;"
+                ng-click="modal_on=''; modal_open_createTable='';">
+            Cancel
+        </button>
+
+    </div>
+</div>

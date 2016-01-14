@@ -1,0 +1,161 @@
+body {
+    background: url('../../assets/images/trading_floor/debug/bg-repeat.png');
+}
+
+* {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	div.modal_filter {
+	background: RGBA(0,0,0,0.2);
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 11;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+}
+
+div.modal_lobby {
+	background: white;
+	height: 240px;
+	position: fixed;
+	top: 20%;
+	z-index: 11;
+}
+
+div.modal_login {
+	background: white;
+	height: 240px;
+	position: fixed;
+	top: 20%;
+	z-index: 11;
+}
+
+div.modal_login > input {
+	width: 80%;
+	padding: 0.5em;
+	margin-left: 10%;
+	margin-bottom: 1em;
+}
+
+div.modal_login > button {
+	float: right;
+		margin-right: 10%;
+}
+
+.custom_btn-success_login:hover {
+	background: #4c4;
+}
+
+div.modal_createTable {
+	background: white;
+	height: 460px;
+	position: fixed;
+	top: 16%;
+	z-index: 11;
+	border-radius: 0.8em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.498039) 0px 5px 15px 0px;
+}
+
+div.modal_createTable.ng-hide-remove, div.modal_createTable.ng-hide-add {
+	-webkit-transition:all linear 0.5s;
+	transition:all linear 0.5s;
+}
+
+div.modal_createTable.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  height: 460px;
+}
+
+div.modal_createTable.ng-hide-add {
+	opacity: 0;
+	height: 0;
+}
+
+a.friend_online {
+	height: 40px;
+	display: inline-block;
+	background-image: URL("../images/trading_floor/debug/trading_chara1.jpg");
+	background-size: cover;
+	padding: 0;
+	cursor: pointer;
+}
+
+a.friend_online:hover {
+	-webkit-transform:scale(1.40);
+	  -moz-transform:scale(1.40);
+	   /* Firefox */ -ms-transform:scale(1.40); 
+	   /* IE 9 */ -o-transform:scale(1.40);
+	    /* Opera */ transform:scale(1.40);
+	     z-index: 11;
+}
+
+div.listing_gritter {
+	position: relative;
+}
+
+div.listing_gritter > div {
+	height: 200px;
+	background: RGBA(0,0,0,0.5);
+}
+
+.profile_image {
+    width: 3em;
+    height: 3em;
+}
+
+.profile_image:hover {
+ background: RGBA(0,0,0,0.5);
+}
+
+div.espace_tools {
+	display: inline-block;
+	width: 1em;
+}
+
+.gain_green {
+	color: #282;
+}
+
+.gain_red {
+	color: red;
+}
+
+#gritter-notice-wrapper {
+	background: RGBA(0,0,0, 0.8);
+	margin-top: 9em;
+	margin-right:14em
+}
+
+div.gritter-bottom {
+	height: 0;
+}
+
+form.nav_bar_animation.ng-hide-remove, form.nav_bar_animation.ng-hide-add {
+	opacity: 1;
+    zoom: 0.5;
+	background: RGBA(200,200,255, 0.1);
+    -webkit-transition:all linear 1s;
+    transition:all linear 1s;
+}
+
+form.navar_animation.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+form.nav_bar_animation.ng-hide-add {
+	opacity: 0;
+    -webkit-transition:all linear 0s;
+    transition:all linear 0s;
+    zoom: 1;
+}
+
+.nopading {
+    padding: 0;
+}
+
+
+

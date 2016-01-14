@@ -1,0 +1,660 @@
+<link href="../assets/styles/right_bar.css" rel="stylesheet" />
+<link href="../assets/styles/myaccount.css" rel="stylesheet" />
+<h1></h1>
+<div class="col-xs-10 col-xs-offset-1">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Performances</div>
+        <div class="panel-body">
+            <div class="col-xs-4">
+                <div class="col-xs-12 box_border" style="background-color: #D9534F">
+                    <h1>{{playerInfo.streak}}</h1>
+                    <h5>Stars</h5>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="col-xs-12 box_border" style="background-color: #61CFE2">
+                    <h1>{{playerInfo.level}}</h1>
+                    <h5>Level</h5>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="col-xs-12 box_border" style="background-color: #29C635">
+                    <h1>{{playerXP.totalXP}}</h1>
+                    <h5>Experience</h5>
+                    <h6></h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+
+<div class="background_filter col-xs-12" ng-show="modal_buyBlue"
+     ng-click="modal_buyBlue='';"></div>
+
+<div class="background_filter_payment col-xs-12" ng-show="modal_buyOrange"
+    ng-click="modal_buyOrange=''; modal_payment_creditCard='';"></div>
+
+<div class="background_filter_validatePayment col-xs-12" ng-show="modal_validatePayment"
+    ng-click="modal_validatePayment=''; processing_Payment='';"></div>
+
+<div class="background_filter_mobilePayment col-xs-12" ng-show="modal_mobilePayment"
+    ng-click="modal_mobilePayment=''; Mobile_Payment='';"></div>
+
+<div class="background_filter_mobileNumber col-xs-12" ng-show="modal_mobileNumber"
+    ng-click="modal_mobileNumber=''; Payment_Mobile_Number='';"></div>
+
+
+<div class="col-xs-12 modal_container_paymentloading" ng-show="processing_Payment" >
+    <div class="ion ion-loading-a"></div>
+    <div class="ion ion-android-checkmark chekmark_paymnet"></div>
+</div>
+
+
+
+<!-- Modal Chips -->
+<div class="col-xs-12 modal_container" ng-show="modal_buyBlue" style="">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color: #f5f5f5">
+            <div>
+                <img style="width:30px;" src="../assets/images/trading_floor/buy_chips.png" />
+                <span style="font-weight:bold; font-size:1.5em">Time For More Chips &amp; Gold</span>
+            </div>
+        </div>
+        <div class="panel-body" style="background-color: #f5f5f5">
+            <div>
+                <img style="width: 78vw; height: 14vh;"
+                    src="../assets/images/trading_floor/pc-banner.jpg" />
+            </div>
+            <!-- Nav tabs -->
+            <ul class="nav buychip_tab nav-tabs" role="tablist">
+                <li class="active"><a href="#buy" role="tab" data-toggle="tab">Chips</a></li>
+                <li><a href="#goldchip" role="tab" data-toggle="tab">Golden Chips</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content buychip_tab_pane">
+                <div class="tab-pane fade in active" id="buy">
+                    <table class="table" style="margin-bottom:0;">
+
+                        <tr ng-repeat="buyOption in buyOptions">
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td style="padding-top:1em;" ng-if="$index == 3">
+                                <span style="font-size:1.15em; font-weight:bold">{{buyOption.numChips | currency}}</span>
+                                <span style="font-size:0.85em; color:grey;" ng-if="buyOption.messageLine1">{{buyOption.messageLine1}}</span>
+                                <h6 style="margin:0px; font-weight:bold; color:darkgoldenrod;" ng-if="buyOption.messageLine2">{{buyOption.messageLine2}}</h6>
+                            </td>
+                            <td colspan="2" style="padding-top:1em;" ng-if="$index != 3">
+                                <span style="font-size:1.15em; font-weight:bold">{{buyOption.numChips | currency}}</span>
+                                <span style="font-size:0.85em; color:grey;" ng-if="buyOption.messageLine1">{{buyOption.messageLine1}}</span>
+                                <h6 style="margin:0px; font-weight:bold; color:darkgoldenrod;" ng-if="buyOption.messageLine2">{{buyOption.messageLine2}}</h6>
+                            </td>
+
+                            <td style="padding-top:0px;padding-bottom:0px;text-align:right;" ng-if="$index == 3">
+                                <img src="../assets/images/trading_floor/popular_band.png" style="width:72px;height:57px" />
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">{{(buyOption.amount/100) | currency}}</span>
+                                <span>{{buyOption.currency}}</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; setSelectedBuyOption(buyOption);openPaymentDialog();">
+                                    BUY</button>
+                            </td>
+                        </tr>
+
+                        <!--
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td colspan="2" style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$512,500</span>
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$1.11</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; setSelectedBuyOption(buyOptions[0]);openPaymentDialog();">
+                                 BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td colspan="2" style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$2,600,000</span>
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$5.57</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td colspan="2" style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$5,200,000</span>
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$11.14</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/buy_chips.png" style="width:33px" />
+                            </td>
+                            <td style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$43,000,000</span>
+                                <span style="font-size:0.85em; color:grey;">(was $12,812,500)</span>
+                                <h6 style="margin:0px; font-weight:bold; color:darkgoldenrod;">+100% 1-day XP Boost</h6>
+                            </td>
+                            <td style="padding-top:0px;padding-bottom:0px;text-align:right;">
+                                <img src="../assets/images/trading_floor/popular_band.png" style="width:72px;height:57px" />
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$27.86</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td  colspan="2" style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$203,000,000</span>
+                                <span style="font-size:0.85em; color:grey;">(was $38,437,500)</span>
+                                <h6 style="margin:0px; font-weight:bold; color:darkgoldenrod;">+200% 1-day XP Boost</h6>
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$83.58</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:1.5em; width:0.5em;">
+                                <img src="../assets/images/trading_floor/graychips.png" style="width:33px" />
+                            </td>
+                            <td  colspan="2" style="padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight:bold">$410,000,000</span>
+                                <span style="font-size:0.85em; color:grey;">(was $64,062,500)</span>
+                                <h6 style="margin:0px; font-weight:bold; color:darkgoldenrod;">+350% 1-day XP Boost</h6>
+                            </td>
+                            <td style="text-align:right; padding-top:1em;">
+                                <span style="font-size:1.15em; font-weight: bold">$139.29</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align:right;width:5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        -->
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="goldchip">
+                    <table class="table" style="margin-bottom:0;">
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td colspan="2" style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">10</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$2.23</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td colspan="2" style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">25</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$5.57</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td colspan="2" style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">50</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$11.13</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">330</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align:right; padding-top: 0px; padding-bottom: 0px;">
+                                <img src="../assets/images/trading_floor/popular_band.png" style="width: 72px; height: 57px" />
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$27.84</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td colspan="2" style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">830</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$55.67</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; width: 0.5em;">
+                                <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 33px" />
+                            </td>
+                            <td colspan="2" style="padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">1,660</span>
+                                <span>Golden Chips</span>
+                            </td>
+                            <td style="text-align: right; padding-top: 1em;">
+                                <span style="font-size: 1.15em; font-weight: bold">$83.51</span>
+                                <span>CAD</span>
+                            </td>
+                            <td style="text-align: right; width: 5%;">
+                                <button class="btn btn-info btn-sm" ng-click="modal_buyOrange=true; modal_payment_creditCard=true;">
+                                    BUY</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <br />
+            <div class="col-xs-6">
+                <h6>TR4DE ST4R <span class="fa fa-lock"></span><span style="font-weight:bold;">Secure Payement</span></h6>
+                <h6 style="font-size:0.8em;">All purchase subject to <a href="#">TR4DE ST4R'S Terms of Service</a></h6>
+            </div>
+            <div class="col-xs-6">
+                <h5></h5>
+                <button class="btn btn-info btn-sm pull-right" ng-click="modal_mobilePayment=true; Mobile_Payment=true;">Buy with Mobile</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal Buy with Mobile-->
+<div class="col-xs-10 modal_container_mobilePayment" ng-show="Mobile_Payment">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="fa fa fa-mobile fa-2x" style="color:royalblue;"></span>
+            <span style="font-size:1.5em;font-weight:bold;">Pay by Mobile</span>
+            <h6 style="margin:0px;padding-left:1em;font-size:1.1em;font-weight:bold;color:gray;">Choose a Package</h6>
+        </div>
+        <div class="panel-body">
+            <div class="panel" style="border-color:royalblue;">
+
+                <table class="table">
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>460,288</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$1.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                        </td>
+                        <td style="text-align: right;">
+                            <span>4</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$1.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>960,576</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$2.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4"/>
+                        </td>
+                        <td style="text-align: right;">
+                            <span>9</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$2.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>2,301,440</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$5.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios6" value="option6" />
+                        </td>
+                        <td style="text-align: right;">
+                            <span>22</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$5.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios7" value="option7" />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>4,670,240</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$10.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios8" value="option8" />
+                        </td>
+                        <td style="text-align: right;">
+                            <span>45</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$10.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios9" value="option9" />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>10,741,552</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$23.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios10" value="option10" />
+                        </td>
+                        <td style="text-align: right;">
+                            <span>103</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$23.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios11" value="option11" />
+                        </td>
+                        <td style="text-align: right; width: 10%;">
+                            <span>77,238,582</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/graychips.png" style="width: 15px;" />
+                        <td>
+                            <span>$50.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                        <td>
+                            <input type="radio" name="optionsRadios" id="optionsRadios12" value="option12" />
+                        </td>
+                        <td style="text-align: right;">
+                            <span>593</span>
+                        </td>
+                        <td>
+                            <img src="../assets/images/trading_floor/Bull_Head_chips.png" style="width: 15px;" />
+                        </td>
+                        <td>
+                            <span>$50.00</span>
+                            <span style="font-size:0.8em;">CAD</span>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-info btn-sm btn-block" ng-click="modal_mobileNumber=true; Payment_Mobile_Number=true;">Continue</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Modal Phone Number--> 
+
+<div class="col-xs-10 modal_container_mobileNumber" ng-show="Payment_Mobile_Number">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span style="color: black;font-weight:bold;">Pay with your phone</span>
+        </div>
+        <div class="panel-body">
+            <span>
+                <img src="../assets/images/trading_floor/graychips.png" style="width: 40px; height: 40px;" /></span>
+            <span>770972</span>
+            <span>Chips</span>
+
+            <span class="pull-right">
+                <span>Total:  $</span>
+                <span>1.00 CAD</span>
+            </span>
+            <div>
+                <hr />
+                <h5>Please enter your number</h5>
+                <h6>You will be asked to confirm the transaction via text text message</h6>
+
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">123</div>
+                            <input class="form-control input-sm" type="number" placeholder="Enter number">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-info">Continue</button>
+                </form>
+
+            </div>
+            <br />
+        </div>
+
+        <div class="panel-footer">
+            <span>Paying with mobile phone (Canana) - 
+                    <a href="">Change</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Payement Info Credit Card -->
+
+<div class="col-xs-10 modal_container_creditcard" ng-show="modal_payment_creditCard" style="padding: 0;">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <span>Payement Details</span>
+            <span class="checkbox pull-right" style="margin:0px;">
+                <label>
+                    <input type="checkbox"/>
+                    Remember
+                </label>
+            </span>
+        </div>
+        <div class="panel-body">
+
+            <form class="form-horizontal" role="form">
+                <fieldset>
+                    <legend>Payment</legend>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-number">Card Number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
+                                        <option>Month</option>
+                                        <option value="01">Jan (01)</option>
+                                        <option value="02">Feb (02)</option>
+                                        <option value="03">Mar (03)</option>
+                                        <option value="04">Apr (04)</option>
+                                        <option value="05">May (05)</option>
+                                        <option value="06">June (06)</option>
+                                        <option value="07">July (07)</option>
+                                        <option value="08">Aug (08)</option>
+                                        <option value="09">Sep (09)</option>
+                                        <option value="10">Oct (10)</option>
+                                        <option value="11">Nov (11)</option>
+                                        <option value="12">Dec (12)</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control" name="expiry-year">
+                                        <option value="13">2013</option>
+                                        <option value="14">2014</option>
+                                        <option value="15">2015</option>
+                                        <option value="16">2016</option>
+                                        <option value="17">2017</option>
+                                        <option value="18">2018</option>
+                                        <option value="19">2019</option>
+                                        <option value="20">2020</option>
+                                        <option value="21">2021</option>
+                                        <option value="22">2022</option>
+                                        <option value="23">2023</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="cvv">Card CVV</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="button" class="btn btn-success" ng-click="modal_validatePayment=true; processing_Payment=true;" >Pay Now</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>
+

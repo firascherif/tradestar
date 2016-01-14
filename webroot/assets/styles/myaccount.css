@@ -1,0 +1,149 @@
+﻿/* tab color */
+.buychip_tab {
+}
+
+    .buychip_tab.nav-tabs > li > a {
+        background-color: white;
+        color: royalblue;
+        border: 0px solid white;
+    }
+
+    /* active tab color */
+    .buychip_tab.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: black;
+        background-color: white;
+        border: 1px solid lightgrey;
+        border-bottom-color: transparent;
+        /*padding-bottom:0.5em;*/
+    }
+
+    /* hover tab color */
+    .buychip_tab.nav-tabs > li > a:hover {
+        border-color: lightgrey;
+        background-color: lightgray;
+        color: #ff9f00;
+    }
+
+    .buychip_tab.tab-content > .active {
+        display: block;
+        border: 1px solid lightgray;
+    }
+
+/*tab pane*/
+.buychip_tab_pane {
+}
+
+    .buychip_tab_pane.tab-content > .active {
+        display: block;
+        border: thin solid lightgray;
+    }
+
+
+.box_border {
+    border-radius: 5px;
+    color: white;
+}
+
+/*button color*/
+
+.new_button_color {
+    background-image: linear-gradient(to bottom,#7F6047 0,#33271E 100%);
+    color: white;
+}
+
+    .new_button_color:hover, .new_button_color:focus {
+        background-image: linear-gradient(to bottom,#33271E 0,#7F6047 100%);
+        background-position: 0 -15px;
+        color: white;
+    }
+
+/*Modal_Overlay*/
+
+div.background_filter {
+    /*background: RGBA(0,0,0,0.5);*/
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 12;
+}
+
+div.background_filter_payment {
+    background: RGBA(255,255,255,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 13;
+}
+
+div.background_filter_validatePayment {
+    background: RGBA(0,0,0,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 14;
+}
+
+div.background_filter_mobilePayment {
+    background: RGBA(0,0,0,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 13;
+}
+
+div.background_filter_mobileNumber {
+    background: RGBA(0,0,0,0.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 14;
+}
+
+/*Modal Container*/
+div.modal_container {
+    position: fixed;
+    top: 2.5%;
+    z-index: 12;
+    
+}
+
+div.modal_container_creditcard {
+    position: fixed;
+    top: 8%;
+    left: 8.5%;
+    z-index: 13;
+}
+
+div.modal_container_mobilePayment {
+    position: fixed;
+    top: 8%;
+    left: 8.5%;
+    z-index: 13;
+}
+
+div.modal_container_mobileNumber {
+    position: fixed;
+    top: 8%;
+    left: 8.5%;
+    z-index: 14;
+}
+
+div.modal_container_paymentloading {
+    position: fixed;
+    top: 45%;
+    z-index: 14;
+    text-align:center;
+    color:white;
+    font-size:3em;
+    
+}
+
+.chekmark_paymnet {
+    color:green;
+}
+
+/*table style*/
+.td_image {
+    width:50px;
+    padding-left:1em;
+}

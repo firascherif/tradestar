@@ -1,0 +1,78 @@
+<!--<link rel="stylesheet" type="text/css" href="../assets/styles/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../assets/styles/demo.css" />
+<link rel="stylesheet" type="text/css" href="../assets/styles/component.css" />-->
+ <link rel="stylesheet" href="/assets/styles/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<style type="text/css">
+    .navbar-center {
+    width: 100%;
+    text-align: center;
+    > li {
+      float: none;
+      display: inline-block;
+    }
+  }
+
+</style>
+
+
+
+<div class="container panel panel-default col-xs-12" style="height:100%;width:99%;margin:10px;background-color:#f2f2f2">
+
+
+
+    
+       <h1 style="color: #000000;text-shadow: 0 0 5px #088A29, 0 0 10px #088A29,
+             0 0 20px #088A29, 0 0 30px #088A29,
+             0 0 40px #088A29;margin-bottom: 30px ;">Statistiques</h1>          
+   
+    
+
+
+
+    <nav role="navigation" class="navbar navbar-inverse ">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse ">
+            <ul class="nav navbar-nav navbar-center">
+        <li class=""><a ng-click= "pageStats = 'devises'">Devises</a></li>
+        <li ><a ng-click= "pageStats = 'performances'">Performances</a></li>
+        <li><a href="#">Recent</a></li>
+        <li><a href="#">Social</a></li>
+        
+      </ul>
+            
+            
+        </div>
+    </nav>
+
+      
+    
+   
+
+<div style="margin: 0;" ng-include="'partials/rightbar_content_accountPerformance.html'" ng-show="pageStats=='performances'"></div>
+
+<div style="margin: 0;" ng-include="'partials/stats/statsDevises.html'" ng-show="pageStats=='devises'"></div>
+
+    
+    
+
+
+
+    
+
+
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+<script src="../assets/scripts/jquery.stickyheader.js"></script>
